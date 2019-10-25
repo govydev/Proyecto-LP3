@@ -15,9 +15,8 @@ body {
     font-size: 400% ;
 }
 
-div {
-    border: 1px #0000 solid;
-    align-content: center;
-    background: crimson;
-    color: darkblue;
+#login{
+    background-color: black;
+    color: chartreuse;
+    text-decoration-color: darkblue;
 }
