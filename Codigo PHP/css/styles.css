@@ -14,3 +14,10 @@ body {
     color: rgb(26, 16, 160);
     font-size: 400% ;
 }
+
+div {
+    border: 1px #0000 solid;
+    align-content: center;
+    background: crimson;
+    color: darkblue;
+}
