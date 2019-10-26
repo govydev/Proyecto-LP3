@@ -5,12 +5,23 @@
 <html>
 <head>
 <meta charset="utf-8">
-<link rel="stylesheet" type = "text/css" href="../css/styles.css">
-<title>Tienda</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="stylesheet" type = "text/css" href="../css/contenido.css">
+<link rel="stylesheet" type = "text/css" href="../css/body.css">
+<title>Login</title>
 </head>
-<body>
+<body class="login">
+    <form action="principal.php">
+        <div class="ex2">
+            <h1 class='titulo'>Login</h1>
+            <h2 class='casillas'>Usuario</h2>
+            <input type="text" name="txtusuario" id="user" >
+            <h2 class='casillas'>Contraseña</h2>
+            <input type="text" name="txtcontra" id="pass"><br><br>
+            <input class='btn' type="button" name="btnsesion" value="Iniciar Sesion"><br><br>
+        </div>
+    </form>
     
-        <h1 class="T_principal">ahora</h1>
-   
 </body>
 </html>
