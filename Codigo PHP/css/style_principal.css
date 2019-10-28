@@ -1,0 +1,44 @@
+.btn {
+    font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif;
+    font-size: 20px; 
+    background-color: rgba(214, 230, 240, 0); 
+    color: black; 
+    border: 0.5px solid rgba(250, 0, 42, 0.589);
+    border-radius: 5px 5px 5px 5px; 
+    -moz-border-radius: 5px 5px 5px 5px; 
+    -webkit-border-radius: 5px 5px 5px 5px;
+    margin: auto;
+    font-size: 40px; 
+    font-weight: 400;
+  }
+h1.titulo{
+    font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif; 
+    font-size: 400%;
+    text-align: center;
+}
+div.izquierda {
+    float: left;
+    max-width: max-content;
+    margin: auto;
+    border: 3px solid rgba(120, 162, 218, 0.678);
+    align-content: center;
+  }
+div.centro {
+    max-width: max-content;
+    margin: auto;
+    border: 0px solid rgba(120, 162, 218, 0.678);
+    align-content: center;
+  }
+div.derecha {
+    float: right;
+    max-width: max-content;
+    margin: 0 0 0 0;
+    border: 3px solid rgba(120, 162, 218, 0.678);
+    align-content: center;
+  }
+.recuadro{
+    background: url(../imagenes/bodega.jpg) left center no-repeat;
+    padding-left:20px;
+    width:130px;
+    height:130px;
+}

@@ -16,6 +16,7 @@ h2.casillas{
     font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif; 
     text-align: center;
 }
+
 #user{
     align-items: center;
     font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif; 
@@ -59,29 +60,3 @@ h2.casillas{
     border-radius: 5px 5px 5px 5px;
     margin: 0 0 0 175px;
   }
-div.izquierda {
-    float: left;
-    max-width: max-content;
-    margin: auto;
-    border: 3px solid rgba(120, 162, 218, 0.678);
-    align-content: center;
-  }
-div.centro {
-    max-width: max-content;
-    margin: auto;
-    border: 3px solid rgba(120, 162, 218, 0.678);
-    align-content: center;
-  }
-div.derecha {
-    float: right;
-    max-width: max-content;
-    margin: 0 0 0 0;
-    border: 3px solid rgba(120, 162, 218, 0.678);
-    align-content: center;
-  }
-.recuadro{
-    background: url(../imagenes/bodega.jpg) left center no-repeat;
-    padding-left:20px;
-    width:130px;
-    height:130px;
-}
