@@ -10,17 +10,19 @@
 </head>
 <body class="principal">
     <h1 class="titulo">Bodega "Goliat"</h1>
+        <form action="lista_distribuidores.php">
+            <div class="centro">
+                <button type="submit" class="btn btn-primary mb-2">Distribuidores</button>
+            </div><br>
+        </form>
         <div class="centro">
-            <input type="button" class="btn" name="" value="Distribuidores">
+        <button type="submit" class="btn btn-primary mb-2">Productos</button>
         </div><br>
         <div class="centro">
-            <input type="button" class="btn" name="" value="Productos">
+        <button type="submit" class="btn btn-primary mb-2">Historial de Compras</button>
         </div><br>
         <div class="centro">
-            <input type="button" class="btn" name="" value="Historial de Compras">
-        </div><br>
-        <div class="centro">
-            <input type="button" class="btn" name="" value="Historial de Ventas">
+        <button type="submit" class="btn btn-primary mb-2">Historial de Ventas</button>
         </div><br>
         
 </body>

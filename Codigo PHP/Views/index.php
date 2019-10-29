@@ -1,5 +1,6 @@
 <?php 
-
+$LNom = $_GET["Lnom"];
+$LPass = $_GET["Lpass"];
 ?>
 <!doctype html>
 <html>
@@ -13,14 +14,14 @@
 <title>Login</title>
 </head>
 <body class="login">
-    <form action="principal.php">
+    <form action="principal.php" metohd="get">
         <div class="ex2">
             <h1 class='titulo'>Login</h1>
             <h2 class='casillas'>Usuario</h2>
-            <input type="text" name="txtusuario" id="user" >
+            <input type="text" name="txtusuario" id="user" name="Lnom" >
             <h2 class='casillas'>Contraseña</h2>
-            <input type="password" name="txtcontra" id="pass"><br><br>
-            <input class='btn' type="button" name="btnsesion" value="Iniciar Sesion"><br><br>
+            <input type="password" name="txtcontra" id="pass" name="Lpass"><br><br>
+            <button type="submit" class="btn btn-primary mb-2">Iniciar Sesion</button><br><br>
         </div>
     </form>
     

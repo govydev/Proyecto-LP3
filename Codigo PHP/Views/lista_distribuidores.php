@@ -1,53 +1,120 @@
 <?php 
     include("../Models/distribuidores.php");
+    $DId = $_GET["Id"];
+    $Nruc = $_GET["ruC"];
+    $Nnom = $_GET["nom"];
+
     $distribuidor = new Distribuidor();
     $array_distribuidor = $distribuidor->listar_distribuidores();
+    $distribuidor->delete_distribuidor($DId);
+    $distribuidor->create_distribuidor($Nnom, $Nruc);
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" type = "text/css" href="../css/style_distribuidores.css">
-    <link rel="stylesheet" type = "text/css" href="../css/body.css">
+    <link rel="stylesheet" type = "text/css" href="../css/style_distribuidor.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <title>Distribuidores</title>
 </head>
+
 <body >
+
     <nav class="navbar navbar-dark bg-dark">
         <h1 class="titulo">Distribuidores</h1>
-        <input type="text" class="busqueda" name="" id=""><br>
-        <div >
-            <input type="button" class="btn" value="Buscar">
-            <select name="" id="" class="selector">
-                        <option value="value1">RUC</option>
-                        <option value="value1">Nombre</option>
-            </select>
-            
-        </div>
-    </nav><br><br>
         
-            <table class="table" >
-                <thead class="thead-dark" >
-                    <tr>
-                        <th scope="col">RUC</th>
-                        <th scope="col">Nombre</th>
-                        <th colspan="2" scope="col" ><a href="http://">Nuevo Distribuidor</a></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach($array_distribuidor as $elemento):?>
-                    <tr>
-                    <td ><?php echo $elemento['nombre']?></td>
-                    <td ><?php echo $elemento['ruc']?></td>
-                    <td ><a href="http://">Actualizar</a></td>
-                    <td><a href="http://">Eliminar</a></td>
-                    </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
+            <div class="btext">
+            <input type="text" class="boxtext" id="inlineFormInput" placeholder="">
+            </div>
+
+            <div class='select'>
+                <select name="" id="" class="selector">
+                    <option value="value1">RUC</option>
+                    <option value="value1">Nombre</option>
+                </select>
+            </div>
+
+            <div class='btn'>
+            <button type="button" class="btn btn-light">Buscar</button>
+            </div>
+                
+    </nav><br><br>
+
+            <div class="collapse" id="collapseActualizar">
+                <div class="card card-body">
+                    <form>
+                        <div class="form-row">
+                            <div class="col-7">
+                                <input type="text" class="form-control" placeholder="RUC">
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control" placeholder="Nombre">
+                            </div>
+                            <div class="col-auto">
+                                <button type="submit" class="btn btn-primary mb-2">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="collapse" id="collapseNuevo">
+                <div class="card card-body">
+                    <form method="get" action="principal.php">
+                        <div class="form-row">
+                            <div class="col-7">
+                                <input type="text" class="form-control" placeholder="RUC" name="ruC">
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control" placeholder="Nombre" name="nom">
+                            </div>
+                            <div class="col-auto">
+                                <button type="submit" class="btn btn-primary mb-2">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <form method="get">
+                <table class="table" >
+                    <thead class="thead-dark" >
+                        <tr>
+                            <th scope="col">RUC</th>
+                            <th scope="col">Nombre</th>
+                            <th colspan="2" scope="col" >
+                                <p>
+                                    <a class="btn btn-dark" data-toggle="collapse" href="#collapseNuevo" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                        Nuevo
+                                    </a>
+                                </p >
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach($array_distribuidor as $elemento):?>
+                        <tr>
+                        <td ><?php echo $elemento['nombre']?></td>
+                        <td ><?php echo $elemento['ruc']?></td>
+                        <td >
+                            <p>
+                                <a class="btn btn-primary" data-toggle="collapse" href="#collapseActualizar" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                    Actualizar
+                                </a>
+                            </p >
+                        </td>
+                        <td>
+                            <a href="principal.php?Id=<?php echo $elemento['id_distribuidor']?>">Eliminar</a>
+                        </td>
+                        </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </form>
+                
         
         
     
