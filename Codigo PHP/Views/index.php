@@ -19,7 +19,7 @@
             <h2 class='casillas'>Usuario</h2>
             <input type="text" name="txtusuario" id="user" >
             <h2 class='casillas'>Contraseña</h2>
-            <input type="text" name="txtcontra" id="pass"><br><br>
+            <input type="password" name="txtcontra" id="pass"><br><br>
             <input class='btn' type="button" name="btnsesion" value="Iniciar Sesion"><br><br>
         </div>
     </form>
