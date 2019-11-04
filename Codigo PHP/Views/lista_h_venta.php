@@ -1,21 +1,17 @@
-<?php 
-    include("../Controllers/ctrl_distribuidor.php");
+<?php
+    include ("../Controllers/ctrl_h_venta.php");
 ?>
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="../JavaScript/ajax_distribuidor.js" type="text/javascript"></script>
-    <title>Distribuidores</title>
+
+    <title>Historial de Ventas</title>
 </head>
-
-<body >
-
+<body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="#">Distribuidores</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -54,10 +50,10 @@
             </form>
         </div>
     </div>
-            
+    
     <div class="collapse" id="collapseNuevo">
         <div class="card card-body">
-            <form method="POST" id="frNewdist">
+            <form method="get" id="frNewvnt">
                 <div class="form-row">
                     <div class="col-7">
                         <input type="text" class="form-control" placeholder="RUC" name="ruC">
@@ -66,7 +62,7 @@
                         <input type="text" class="form-control" placeholder="Nombre" name="nom">
                     </div>
                     <div class="col-auto">
-                        <button class="btn btn-primary mb-2" id="btnnuevo" onclick="AgregarDist()">Submit</button>
+                        <button class="btn btn-primary mb-2" id="btnnuevo" onclick="AgregarHVnt()">Submit</button>
                     </div>
                 </div>
             </form>
@@ -77,8 +73,10 @@
         <table class="table" >
             <thead class="thead-dark" >
                 <tr>
-                    <th scope="col">RUC</th>
-                    <th scope="col">Nombre</th>
+                    <th scope="col">Fecha de venta</th>
+                    <th scope="col">Cantidad de venta</th>
+                    <th scope="col">Total de venta</th>
+                    <th scope="col">Id Producto</th>
                     <th colspan="2" scope="col" >
                         <p>
                             <a class="btn btn-dark" data-toggle="collapse" href="#collapseNuevo" role="button" aria-expanded="false" aria-controls="collapseExample">
@@ -89,28 +87,28 @@
                 </tr>
             </thead>
             <tbody>
-                <?php foreach($array_distribuidor as $elemento):?>
+                <?php foreach($array_producto as $elemento):?>
                 <tr>
-                    <td ><?php echo $elemento['nombre']?></td>
-                    <td ><?php echo $elemento['ruc']?></td>
-                    <td >
-                        <p>
-                            <a class="btn btn-primary" data-toggle="collapse" href="#collapseActualizar" role="button" aria-expanded="false" aria-controls="collapseExample">
-                                Actualizar
-                            </a>
-                        </p >
-                    </td>
-                    <td>
-                        <a class="delete" data="<?php echo $elemento['id_distribuidor']?>" href="#">
-                            Eliminar
+                <td ><?php echo $elemento['fecha_venta']?></td>
+                <td ><?php echo $elemento['cantidad_venta']?></td>
+                <td ><?php echo $elemento['total_venta']?></td>
+                <td ><?php echo $elemento['id_producto']?></td>
+                <td >
+                    <p>
+                        <a class="btn btn-primary" data-toggle="collapse" href="#collapseActualizar" role="button" aria-expanded="false" aria-controls="collapseExample">
+                            Actualizar
                         </a>
-                    </td>
+                    </p >
+                </td>
+                <td>
+                    <a href="principal.php?Id=<?php echo $elemento['id_distribuidor']?>">Eliminar</a>
+                </td>
                 </tr>
                 <?php endforeach; ?>
             </tbody>
         </table>
     </form>
-                
+
 </body>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

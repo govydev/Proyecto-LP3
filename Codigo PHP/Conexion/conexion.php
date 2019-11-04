@@ -13,5 +13,5 @@ class Conexion{
             return;
         }	
         $this->conexion_db->set_charset(DB_CHARSET);
-    }	
+    }
 }

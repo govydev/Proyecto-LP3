@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" type = "text/css" href="../css/style_principal.css">
-    <link rel="stylesheet" type = "text/css" href="../css/body.css">
+    <link rel="stylesheet" type = "text/css" href="../Estilo/css/style_principal.css">
+    <link rel="stylesheet" type = "text/css" href="../Estilo/css/body.css">
     <title>Principal</title>
 </head>
 <body class="principal">
@@ -15,15 +15,21 @@
                 <button type="submit" class="btn btn-primary mb-2">Distribuidores</button>
             </div><br>
         </form>
-        <div class="centro">
-        <button type="submit" class="btn btn-primary mb-2">Productos</button>
-        </div><br>
-        <div class="centro">
-        <button type="submit" class="btn btn-primary mb-2">Historial de Compras</button>
-        </div><br>
-        <div class="centro">
-        <button type="submit" class="btn btn-primary mb-2">Historial de Ventas</button>
-        </div><br>
+        <form action="lista_productos.php">
+            <div class="centro">
+                <button type="submit" class="btn btn-primary mb-2">Productos</button>
+            </div><br>
+        </form>
+        <form action="lista_h_compra.php">
+            <div class="centro">
+                <button type="submit" class="btn btn-primary mb-2">Historial de Compras</button>
+            </div><br>
+        </form>
+        <form action="lista_h_venta.php">
+            <div class="centro">
+                <button type="submit" class="btn btn-primary mb-2">Historial de Ventas</button>
+            </div><br>
+        </form>
         
 </body>
 </html>
