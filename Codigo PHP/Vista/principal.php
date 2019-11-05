@@ -1,4 +1,9 @@
-<!DOCTYPE html>
+<?php 
+	session_start();
+
+	if(isset($_SESSION['usuario'])){
+ ?>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,6 +11,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" type = "text/css" href="../Estilo/css/style_principal.css">
     <link rel="stylesheet" type = "text/css" href="../Estilo/css/body.css">
+    <?php require_once "scripts.php"; ?>
     <title>Principal</title>
 </head>
 <body class="principal">
@@ -33,3 +39,8 @@
         
 </body>
 </html>
+<?php
+} else {
+	header("location:index.php");
+	}
+ ?>
