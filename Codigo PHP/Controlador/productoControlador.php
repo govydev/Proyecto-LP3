@@ -1,9 +1,27 @@
 <?php
-    include("../Models/productos.php");
-    $Nnom = isset($_POST['nom']) ? $_POST['nom'] : null ;
-    $Nstk = isset($_POST['stk']) ? $_POST['stk'] : null ;
-    $Nfv = isset($_POST['fv']) ? $_POST['fv'] : null ;
-    $Npv = isset($_POST['pv']) ? $_POST['pv'] : null ;
-    $producto = new Producto();
-    $array_producto = $producto->listar_productos();
-    $producto->create_producto($Nnom, $Nstk, $Nfv, $Npv);
+    require_once("../Modelo/producto.php");
+    require_once("productoDAO.php");
+
+    $accion = $_GET["a"];
+
+    switch ($accion) {
+        case 'agregar':
+            $producto = new ProductoDAO();
+            $producto->setProducto($_POST["nombre"],$_POST["stock"],$_POST["fecha_vencimiento"],$_POST["precio_venta"]);
+            $producto->ingresarDato();
+            break;
+        case 'modificar':
+            $producto = new ProductoDAO();
+            $producto->setProducto($_POST["nombre"],$_POST["stock"],$_POST["fecha_vencimiento"],$_POST["precio_venta"]);
+            $producto->editarDato($_POST["id"]);
+            break;
+        case 'eliminar':
+            $producto = new ProductoDAO();
+            $id = $_GET["id"];
+            $producto->eliminarDato($id);
+            break;
+    }
+
+    header ('Location:../Vista/lista_producto.php');
+
+?>

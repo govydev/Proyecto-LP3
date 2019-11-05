@@ -1,12 +1,8 @@
 <?php
-  include("../Models/productos.php");
-  $Nnom = isset($_POST['nom']) ? $_POST['nom'] : null ;
-  $Nstk = isset($_POST['stk']) ? $_POST['stk'] : null ;
-  $Nfv = isset($_POST['fv']) ? $_POST['fv'] : null ;
-  $Npv = isset($_POST['pv']) ? $_POST['pv'] : null ;
-  $producto = new Producto();
-  $array_producto = $producto->listar_productos();
-  $producto->create_producto($Nnom, $Nstk, $Nfv, $Npv);
+
+require_once('../Controlador/productoDAO.php');
+$elemento = productoDAO::buscarId($_GET['id']);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -41,25 +37,28 @@
   </div>
 </nav>
 
-  <form method="POST">
-    <div class="form-group">
-      <label for="exampleInputEmail1">Nombre</label>
-      <input type="text" class="form-control" id="exampleInputEmail1"placeholder="Ingrese Nombre" name="nom">
-    </div>
-    <div class="form-group">
-      <label for="exampleInputPassword1">Stock</label>
-      <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Ingrese Stock" name="stk">
-    </div>
-    <div class="form-group">
-      <label for="exampleInputEmail1">Fecha de Vencimiento</label>
-      <input type="date" class="form-control" id="exampleInputEmail1"placeholder="" name="fv">
-    </div>
-    <div class="form-group">
-      <label for="exampleInputEmail1">Precio de Venta</label>
-      <input type="text" class="form-control" id="exampleInputEmail1"placeholder="Ingrese Precio" name="pv">
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
+<form action="../Controlador/productoControlador.php?a=modificar" method="POST">
+  <div class="form-group">
+    <input type="hidden" name="id" value = "<?= $elemento[0]?>">
+  </div>
+  <div class="form-group">
+    <label >Nombre</label>
+    <input type="text" class="form-control" placeholder="Ingrese Nombre" name="nombre" value = "<?= $elemento[1]?>" required>
+  </div>
+  <div class="form-group">
+    <label >Stock</label>
+    <input type="text" class="form-control" placeholder="Ingrese Stock" name="stock" value = "<?= $elemento[2]?>" required>
+  </div>
+  <div class="form-group">
+    <label >Fecha de Vencimiento</label>
+    <input type="date" class="form-control" placeholder="Ingrese Fecha de Vencimiento" name="fecha_vencimiento" value = "<?= $elemento[3]?>" required>
+  </div>
+  <div class="form-group">
+    <label >Precio de Venta</label>
+    <input type="text" class="form-control" placeholder="Ingrese Precio de Venta" name="precio_venta" value = "<?= $elemento[4]?>" required>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
 </form>
 </body>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

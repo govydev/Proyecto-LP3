@@ -1,5 +1,6 @@
 <?php
-    //include ("../Controllers/ctrl_productos.php");
+    require_once("../Modelo/producto.php");
+    require_once("../Controlador/productoDAO.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,9 +28,15 @@
       
       
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Busqueda" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+    <form class="form-inline my-2 my-lg-0" method="POST">
+        <input class="form-control mr-sm-2" type="search" placeholder="Busqueda" aria-label="Search" name="busqueda">
+        <select name="cat" class="form-control">
+            <option value="nombre">Nombre</option>
+            <option value="stock">Stock</option>
+            <option value="fecha_vencimiento">Fecha de Venciento</option>
+            <option value="precio_venta">Precio de Venta</option>
+        </select>
+        <input class="btn btn-outline-success my-2 my-sm-0" type="submit" value="Buscar">
     </form>
   </div>
 </nav>
@@ -54,29 +61,29 @@
     
 <div class="collapse" id="collapseNuevo">
     <div class="card card-body">
-        <form method="POST" id="frNewprdt">
+        <form method="POST" action="../Controlador/productoControlador.php?a=agregar&id">
             <div class="form-row">
                 <div class="col-7">
-                    <input type="text" class="form-control" placeholder="Nombre" name="nom">
+                    <input type="text" class="form-control" placeholder="Nombre" name="nombre">
                 </div>
                 <div class="col">
-                    <input type="text" class="form-control" placeholder="Stock" name="stk">
+                    <input type="text" class="form-control" placeholder="Stock" name="stock">
                 </div>
                 <div class="col">
-                    <input type="date" class="form-control" placeholder="Fecha de Vencimiento" name="fv">
+                    <input type="date" class="form-control" placeholder="Fecha de Vencimiento" name="fecha_vencimiento">
                 </div>
                 <div class="col">
-                    <input type="text" class="form-control" placeholder="Precio de Venta" name="pv">
+                    <input type="text" class="form-control" placeholder="Precio de Venta" name="precio_venta">
                 </div>
                 <div class="col-auto">
-                    <button class="btn btn-primary mb-2" id="btnnuevo" onclick="AgregarPrdt()">Submit</button>
+                    <input class="btn btn-primary mb-2" type="submit" value="Guardar">
                 </div>
             </div>
         </form>
     </div>
 </div>
 
-<form method="get">
+<form method="POST">
     <table class="table" >
         <thead class="thead-dark" >
             <tr>
@@ -85,32 +92,37 @@
                 <th scope="col">Fecha de Vencimiento</th>
                 <th scope="col">Precio de Venta</th>
                 <th colspan="2" scope="col" >
-                    <p>
-                        <a class="btn btn-dark" href="form_producto.php" role="button">
-                            Nuevo
-                        </a>
-                    </p >
+                    <a  data-toggle="collapse" href="#collapseNuevo">
+                        Nuevo
+                    </a>
                 </th>
             </tr>
         </thead>
         <tbody>
-            <?php foreach($array_producto as $elemento):?>
-            <tr>
-            <td ><?php echo $elemento['nombre']?></td>
-            <td ><?php echo $elemento['stock']?></td>
-            <td ><?php echo $elemento['fecha_vencimiento']?></td>
-            <td ><?php echo $elemento['precio_venta']?></td>
-            <td >
-                <p>
-                    <a class="btn btn-primary" data-toggle="collapse" href="#collapseActualizar" role="button" aria-expanded="false" aria-controls="collapseExample">
-                        Actualizar
-                    </a>
-                </p >
-            </td>
-            <td>
-                <a href="principal.php?Id=<?php echo $elemento['id_distribuidor']?>">Eliminar</a>
-            </td>
-            </tr>
+            <?php 
+                $busqueda = isset($_POST['busqueda']) ? $_POST['busqueda'] : null ;
+                if($busqueda=="" || $busqueda==null)
+                    $datos = ProductoDAO::listarProducto();
+                else
+                    $datos = ProductoDAO::buscar($_POST["busqueda"],$_POST["cat"]);
+
+                foreach($datos as $elemento):?>
+                <tr>
+                    <td ><?php echo $elemento[1]?></td>
+                    <td ><?php echo $elemento[2]?></td>
+                    <td ><?php echo $elemento[3]?></td>
+                    <td ><?php echo $elemento[4 ]?></td>
+                    <td >
+                        <a class="btn btn-primary" href="form_producto.php?id=<?=$elemento[0]?>">
+                            Actualizar
+                        </a>
+                    </td>
+                    <td>
+                        <a class="btn btn-primary" href="../Controlador/productoControlador.php?a=eliminar&id=<?=$elemento[0]?>" onclick="return confirm('¿Realmente quiere eliminar el dato?')">
+                            Eliminar
+                        </a>
+                    </td>
+                </tr>
             <?php endforeach; ?>
         </tbody>
     </table>

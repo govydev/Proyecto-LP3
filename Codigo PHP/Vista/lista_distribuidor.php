@@ -29,8 +29,6 @@
       <li class="nav-item active">
         <a class="nav-link" href="principal.php">Home <span class="sr-only">(current)</span></a>
       </li>
-      
-      
     </ul>
     <form class="form-inline my-2 my-lg-0" method="POST">
       <input class="form-control mr-sm-2" type="search" placeholder="Busqueda" aria-label="Search" name="busqueda">
@@ -61,63 +59,63 @@
     </div>
 </div>
             
-    <div class="collapse" id="collapseNuevo">
-        <div class="card card-body">
-            <form method="POST" action="../Controlador/distribuidorControlador.php?a=agregar&id">
-                <div class="form-row">
-                    <div class="col-7">
-                        <input type="text" class="form-control" placeholder="RUC" name="ruc" required>
-                    </div>
-                    <div class="col">
-                        <input type="text" class="form-control" placeholder="Nombre" name="nombre" required>
-                    </div>
-                    <div class="col-auto">
-                        <input class="btn btn-primary mb-2" type="submit" value="Guardar">
-                    </div>
+<div class="collapse" id="collapseNuevo">
+    <div class="card card-body">
+        <form method="POST" action="../Controlador/distribuidorControlador.php?a=agregar&id">
+            <div class="form-row">
+                <div class="col-7">
+                    <input type="text" class="form-control" placeholder="RUC" name="ruc" required>
                 </div>
-            </form>
-        </div>
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="Nombre" name="nombre" required>
+                </div>
+                <div class="col-auto">
+                    <input class="btn btn-primary mb-2" type="submit" value="Guardar">
+                </div>
+            </div>
+        </form>
     </div>
+</div>
 
-    <form method="POST">
-        <table class="table" >
-            <thead class="thead-dark" >
-                    <th scope="col">RUC</th>
-                    <th scope="col">Nombre</th>
-                    <th colspan="2" scope="col" >
-                        <a  data-toggle="collapse" href="#collapseNuevo">
-                            Nuevo
+<form method="POST">
+    <table class="table" >
+        <thead class="thead-dark" >
+                <th scope="col">RUC</th>
+                <th scope="col">Nombre</th>
+                <th colspan="2" scope="col" >
+                    <a  data-toggle="collapse" href="#collapseNuevo">
+                        Nuevo
+                    </a>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php 
+                $busqueda = isset($_POST['busqueda']) ? $_POST['busqueda'] : null ;
+                if($busqueda=="" || $busqueda==null)
+                    $datos = DistribuidorDAO::listarDistribuidor();
+                else
+                    $datos = DistribuidorDAO::buscar($_POST["busqueda"],$_POST["cat"]);
+
+                foreach($datos as $elemento):?>
+                <tr>
+                    <td ><?php echo $elemento[1]?></td>
+                    <td ><?php echo $elemento[2]?></td>
+                    <td >
+                        <a class="btn btn-primary" href="form_distribuidor.php?id=<?=$elemento[0]?>">
+                            Actualizar
                         </a>
-                    </th>
+                    </td>
+                    <td>
+                        <a class="delete" href="../Controlador/distribuidorControlador.php?a=eliminar&id=<?=$elemento[0]?>" onclick="return confirm('¿Realmente quiere eliminar el dato?')">
+                            Eliminar
+                        </a>
+                    </td>
                 </tr>
-            </thead>
-            <tbody>
-                <?php 
-                    $busqueda = isset($_POST['busqueda']) ? $_POST['busqueda'] : null ;
-                    if($busqueda=="" || $busqueda==null)
-                        $datos = DistribuidorDAO::listarDistribuidor();
-                    else
-                        $datos = DistribuidorDAO::buscar($_POST["busqueda"],$_POST["cat"]);
-
-                    foreach($datos as $elemento):?>
-                    <tr>
-                        <td ><?php echo $elemento[1]?></td>
-                        <td ><?php echo $elemento[2]?></td>
-                        <td >
-                            <a class="btn btn-primary" href="form_distribuidor.php?id=<?=$elemento[0]?>">
-                                Actualizar
-                            </a>
-                        </td>
-                        <td>
-                            <a class="delete" href="../Controlador/distribuidorControlador.php?a=eliminar&id=<?=$elemento[0]?>" onclick="return confirm('¿Realmente quiere eliminar el dato?')">
-                                Eliminar
-                            </a>
-                        </td>
-                    </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
-    </form>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+</form>
                 
 </body>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

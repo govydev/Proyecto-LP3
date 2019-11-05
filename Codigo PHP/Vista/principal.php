@@ -15,7 +15,7 @@
                 <button type="submit" class="btn btn-primary mb-2">Distribuidores</button>
             </div><br>
         </form>
-        <form action="lista_productos.php">
+        <form action="lista_producto.php">
             <div class="centro">
                 <button type="submit" class="btn btn-primary mb-2">Productos</button>
             </div><br>

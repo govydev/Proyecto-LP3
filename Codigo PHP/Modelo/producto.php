@@ -7,12 +7,12 @@ class Producto{
     private $f_vencimiento;
     private $p_venta;
 
-    public function setId_producto($id){
-        $this->id=$id;
+    public function setId_producto($id_producto){
+        $this->id_producto=$id_producto;
     } 
 
     public function getId_producto(){
-        return $this->id;
+        return $this->id_producto;
     }
     public function setNombre($nombre){
         $this->nombre=$nombre;
