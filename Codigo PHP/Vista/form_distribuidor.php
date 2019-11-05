@@ -1,4 +1,9 @@
-<?php?>
+<?php
+
+require_once('../Controlador/distribuidorDAO.php');
+$elemento = distribuidorDAO::buscarId($_GET['id']);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,20 +15,23 @@
     <title>Distribuidor</title>
 </head>
 <body>
-<form>
-<h1>Distribuidores</h1>
-  <div class="form-group">
-    <label for="exampleInputEmail1">Nombre</label>
-    <input type="text" class="form-control" id="exampleInputEmail1"placeholder="Ingrese Nombre">
+
+  <h1>Distribuidores</h1>
+  <form action="../Controlador/distribuidorControlador.php?a=modificar" method="POST">
+    <div class="form-group">
+      <input type="hidden" name="id" value = "<?= $elemento[0]?>">
+    </div>
+    <div class="form-group">
+      <label >Nombre</label>
+      <input type="text" class="form-control" placeholder="Ingrese Nombre" name="nombre" value = "<?= $elemento[1]?>" required>
+    </div>
+    <div class="form-group">
+      <label >RUC</label>
+      <input type="text" class="form-control" placeholder="Ingrese RUC" name="ruc" value = "<?= $elemento[2]?>" required>
+    </div>
     
-  </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1">RUC</label>
-    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Ingrese RUC">
-    <small id="emailHelp" class="form-text text-muted">Obligatorio.</small>
-  </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
 </body>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

@@ -1,0 +1,45 @@
+<?php
+
+class Producto{
+    private $id_producto;
+    private $nombre;
+    private $stock;
+    private $f_vencimiento;
+    private $p_venta;
+
+    public function setId_producto($id){
+        $this->id=$id;
+    } 
+
+    public function getId_producto(){
+        return $this->id;
+    }
+    public function setNombre($nombre){
+        $this->nombre=$nombre;
+    } 
+
+    public function getNombre(){
+        return $this->nombre;
+    }
+    public function setStock($stock){
+        $this->stock=$stock;
+    } 
+
+    public function getStock(){
+        return $this->stock;
+    }
+    public function setF_Vencimiento($f_vencimiento){
+        $this->f_vencimiento=$f_vencimiento;
+    } 
+
+    public function getF_Vencimiento(){
+        return $this->f_vencimiento;
+    }
+    public function setP_Venta($p_venta){
+        $this->p_venta=$p_venta;
+    } 
+
+    public function getP_Venta(){
+        return $this->p_venta;
+    }
+}

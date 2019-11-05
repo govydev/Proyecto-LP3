@@ -1,5 +1,7 @@
 <?php 
-    include("../Controllers/ctrl_distribuidor.php");
+    require_once("../Modelo/distribuidor.php");
+    require_once("../Controlador/distribuidorDAO.php");
+    
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -30,82 +32,88 @@
       
       
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Busqueda" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+    <form class="form-inline my-2 my-lg-0" method="POST">
+      <input class="form-control mr-sm-2" type="search" placeholder="Busqueda" aria-label="Search" name="busqueda">
+      <select name="cat" class="form-control">
+            <option value="nombre">Nombre</option>
+            <option value="ruc">RUC</option>
+        </select>
+      <input class="btn btn-outline-success my-2 my-sm-0" type="submit" value="Buscar">
     </form>
   </div>
 </nav>
 
-    <div class="collapse" id="collapseActualizar">
-        <div class="card card-body">
-            <form>
-                <div class="form-row">
-                    <div class="col-7">
-                        <input type="text" class="form-control" placeholder="RUC">
-                    </div>
-                    <div class="col">
-                        <input type="text" class="form-control" placeholder="Nombre">
-                    </div>
-                    <div class="col-auto">
-                        <button type="submit" class="btn btn-primary mb-2">Submit</button>
-                    </div>
+<div class="collapse" id="collapseActualizar">
+    <div class="card card-body">
+        <form>
+            <div class="form-row">
+                <div class="col-7">
+                    <input type="text" class="form-control" placeholder="RUC" name="ruc" value = "<?= $dato[1]?>">
                 </div>
-            </form>
-        </div>
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="Nombre" name="nombre" value = "<?= $dato[2]?>">
+                </div>
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-primary mb-2">Submit</button>
+                </div>
+            </div>
+        </form>
     </div>
+</div>
             
     <div class="collapse" id="collapseNuevo">
         <div class="card card-body">
-            <form method="POST" id="frNewdist">
+            <form method="POST" action="../Controlador/distribuidorControlador.php?a=agregar&id">
                 <div class="form-row">
                     <div class="col-7">
-                        <input type="text" class="form-control" placeholder="RUC" name="ruC">
+                        <input type="text" class="form-control" placeholder="RUC" name="ruc" required>
                     </div>
                     <div class="col">
-                        <input type="text" class="form-control" placeholder="Nombre" name="nom">
+                        <input type="text" class="form-control" placeholder="Nombre" name="nombre" required>
                     </div>
                     <div class="col-auto">
-                        <button class="btn btn-primary mb-2" id="btnnuevo" onclick="AgregarDist()">Submit</button>
+                        <input class="btn btn-primary mb-2" type="submit" value="Guardar">
                     </div>
                 </div>
             </form>
         </div>
     </div>
 
-    <form method="get">
+    <form method="POST">
         <table class="table" >
             <thead class="thead-dark" >
-                <tr>
                     <th scope="col">RUC</th>
                     <th scope="col">Nombre</th>
                     <th colspan="2" scope="col" >
-                        <p>
-                            <a class="btn btn-dark" data-toggle="collapse" href="#collapseNuevo" role="button" aria-expanded="false" aria-controls="collapseExample">
-                                Nuevo
-                            </a>
-                        </p >
+                        <a  data-toggle="collapse" href="#collapseNuevo">
+                            Nuevo
+                        </a>
                     </th>
                 </tr>
             </thead>
             <tbody>
-                <?php foreach($array_distribuidor as $elemento):?>
-                <tr>
-                    <td ><?php echo $elemento['nombre']?></td>
-                    <td ><?php echo $elemento['ruc']?></td>
-                    <td >
-                        <p>
-                            <a class="btn btn-primary" data-toggle="collapse" href="#collapseActualizar" role="button" aria-expanded="false" aria-controls="collapseExample">
+                <?php 
+                    $busqueda = isset($_POST['busqueda']) ? $_POST['busqueda'] : null ;
+                    if($busqueda=="" || $busqueda==null)
+                        $datos = DistribuidorDAO::listarDistribuidor();
+                    else
+                        $datos = DistribuidorDAO::buscar($_POST["busqueda"],$_POST["cat"]);
+
+                    foreach($datos as $elemento):?>
+                    <tr>
+                        <td ><?php echo $elemento[1]?></td>
+                        <td ><?php echo $elemento[2]?></td>
+                        <td >
+                            <a class="btn btn-primary" href="form_distribuidor.php?id=<?=$elemento[0]?>">
                                 Actualizar
                             </a>
-                        </p >
-                    </td>
-                    <td>
-                        <a class="delete" data="<?php echo $elemento['id_distribuidor']?>" href="#">
-                            Eliminar
-                        </a>
-                    </td>
-                </tr>
+                        </td>
+                        <td>
+                            <a class="delete" href="../Controlador/distribuidorControlador.php?a=eliminar&id=<?=$elemento[0]?>" onclick="return confirm('¿Realmente quiere eliminar el dato?')">
+                                Eliminar
+                            </a>
+                        </td>
+                    </tr>
                 <?php endforeach; ?>
             </tbody>
         </table>

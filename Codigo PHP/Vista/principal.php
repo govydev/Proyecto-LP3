@@ -10,7 +10,7 @@
 </head>
 <body class="principal">
     <h1 class="titulo">Bodega "Goliat"</h1>
-        <form action="lista_distribuidores.php">
+        <form action="lista_distribuidor.php">
             <div class="centro">
                 <button type="submit" class="btn btn-primary mb-2">Distribuidores</button>
             </div><br>

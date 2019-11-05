@@ -1,17 +1,28 @@
 <?php
  include("config.php");
 
-class Conexion{
-    protected $conexion_db;
-    //contructor
-	public function Conexion(){
-        //el uso de (mysqli) es necesario a partir de versiones superiores a PHP 5.4
-        $this->conexion_db = new mysqli(DB_HOST, DB_USUARIO, DB_CONTRA, DB_NOMBRE);
+ class Conexion {
+	private $conexion;
 
-        if($this->conexion_db->connect_errno){
-            echo "Fallo al conectar a Mysql: ".$this->conexion_db->connect_error;
-            return;
-        }	
-        $this->conexion_db->set_charset(DB_CHARSET);
-    }
+	public function __construct(){
+		if(!isset($this->conexion)){
+			$this->conexion= new mysqli(DB_HOST, DB_USUARIO, DB_CONTRA, DB_NOMBRE)or die(mysql_error());
+		}
+		$this->conexion->set_charset('utf8');		
+	}	
+
+	public function consultar ($sql) {
+		$contenedor = $this->conexion->query($sql);
+		return $contenedor->fetch_all();
+	}
+
+	public function actualizar ($sql) {
+		return $this->conexion->query($sql);
+	}
+
+	public function closeConexion(){
+		return mysqli_close($this->conexion);
+	}
 }
+
+?>
