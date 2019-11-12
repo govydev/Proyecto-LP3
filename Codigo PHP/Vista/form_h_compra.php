@@ -1,7 +1,7 @@
 <?php
 
-require_once('../Controlador/distribuidorDAO.php');
-$elemento = distribuidorDAO::buscarId($_GET['id']);
+require_once('../Controlador/h_compraDAO.php');
+$elemento = HCompraDAO::buscarId($_GET['id']);
 
 ?>
 <!DOCTYPE html>
@@ -13,12 +13,12 @@ $elemento = distribuidorDAO::buscarId($_GET['id']);
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link rel="stylesheet" type = "text/css" href="../Estilo/css/style_form.css">
-    <title>Distribuidor</title>
+    <title>Historial de Compra</title>
 </head>
 <body>
-
+<form>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Actualizar Distribuidor</a>
+  <a class="navbar-brand" href="#">Actualizar Historial de Compra</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -38,21 +38,37 @@ $elemento = distribuidorDAO::buscarId($_GET['id']);
   </div>
 </nav>
 
-  <form action="../Controlador/distribuidorControlador.php?a=modificar" method="POST">
-      <div class="form-group">
-        <input type="hidden" name="id" value = "<?= $elemento[0]?>">
-      </div>
-      <div class="form-group">
-        <label >Nombre</label>
-        <input type="text" class="form-control" placeholder="Ingrese Nombre" name="nombre" value = "<?= $elemento[1]?>" required>
-      </div>
-      <div class="form-group">
-        <label >RUC</label>
-        <input type="text" class="form-control" placeholder="Ingrese RUC" name="ruc" value = "<?= $elemento[2]?>" required>
-      </div>
-      
-      <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
+<form action="../Controlador/h_compraControlador.php?a=modificar" method="POST">
+  <div class="form-group">
+    <input type="hidden" name="id" value = "<?= $elemento[0]?>">
+  </div>
+  <div class="form-group">
+    <label >Precio de Compra</label>
+    <input type="num" class="form-control" placeholder="Ingrese Precio" name="precio_compra" value = "<?= $elemento[1]?>" required>
+  </div>
+  <div class="form-group">
+    <label >Fecha de Compra</label>
+    <input type="date" class="form-control" name="fecha_compra" value = "<?= $elemento[2]?>" required>
+  </div>
+  <div class="form-group">
+    <label >Cantidad de Compra</label>
+    <input type="num" class="form-control" placeholder="Ingrese Cantidad de Compra" name="cantidad_compra" value = "<?= $elemento[3]?>" required>
+  </div>
+  <div class="form-group">
+    <label >Total de Compra</label>
+    <input type="num" class="form-control" placeholder="Ingrese Total de Compra" name="total_compra" value = "<?= $elemento[4]?>" required>
+  </div>
+  <div class="form-group">
+    <label >Producto</label>
+    <input type="num" class="form-control" placeholder="Ingrese Id Producto" name="id_producto" value = "<?= $elemento[5]?>" required>
+  </div>
+  <div class="form-group">
+    <label >Distribuidor</label>
+    <input type="num" class="form-control" placeholder="Ingrese Id Distribuidor" name="id_distribuidor" value = "<?= $elemento[6]?>" required>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</form>
 </body>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

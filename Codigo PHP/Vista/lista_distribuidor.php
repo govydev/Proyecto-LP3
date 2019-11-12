@@ -25,7 +25,7 @@
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
+    <ul class="navbar-nav m-auto">
       <li class="nav-item active">
         <a class="nav-link" href="principal.php">Home <span class="sr-only">(current)</span></a>
       </li>
@@ -41,29 +41,11 @@
   </div>
 </nav>
 
-<div class="collapse" id="collapseActualizar">
-    <div class="card card-body">
-        <form>
-            <div class="form-row">
-                <div class="col-7">
-                    <input type="text" class="form-control" placeholder="RUC" name="ruc" value = "<?= $dato[1]?>">
-                </div>
-                <div class="col">
-                    <input type="text" class="form-control" placeholder="Nombre" name="nombre" value = "<?= $dato[2]?>">
-                </div>
-                <div class="col-auto">
-                    <button type="submit" class="btn btn-primary mb-2">Submit</button>
-                </div>
-            </div>
-        </form>
-    </div>
-</div>
-            
 <div class="collapse" id="collapseNuevo">
     <div class="card card-body">
         <form method="POST" action="../Controlador/distribuidorControlador.php?a=agregar&id">
             <div class="form-row">
-                <div class="col-7">
+                <div class="col-6">
                     <input type="text" class="form-control" placeholder="RUC" name="ruc" required>
                 </div>
                 <div class="col">

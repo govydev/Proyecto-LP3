@@ -12,7 +12,7 @@
             break;
         case 'modificar':
             $distribuidor = new HVentaDAO();
-            $distribuidor->setDistribuidor($_POST["fecha_venta"],$_POST["cantidad_venta"],$_POST["total_venta"],$_POST["id_producto"]);
+            $distribuidor->setHVenta($_POST["fecha_venta"],$_POST["cantidad_venta"],$_POST["total_venta"],$_POST["id_producto"]);
             $distribuidor->editarDato($_POST["id"]);
             break;
         case 'eliminar':

@@ -21,7 +21,7 @@
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
+    <ul class="navbar-nav m-auto">
       <li class="nav-item active">
         <a class="nav-link" href="principal.php">Home <span class="sr-only">(current)</span></a>
       </li>
@@ -40,40 +40,22 @@
     </form>
   </div>
 </nav>
-
-<div class="collapse" id="collapseActualizar">
-    <div class="card card-body">
-        <form>
-            <div class="form-row">
-                <div class="col-7">
-                    <input type="text" class="form-control" placeholder="RUC">
-                </div>
-                <div class="col">
-                    <input type="text" class="form-control" placeholder="Nombre">
-                </div>
-                <div class="col-auto">
-                    <button type="submit" class="btn btn-primary mb-2">Submit</button>
-                </div>
-            </div>
-        </form>
-    </div>
-</div>
     
 <div class="collapse" id="collapseNuevo">
     <div class="card card-body">
         <form method="POST" action="../Controlador/productoControlador.php?a=agregar&id">
             <div class="form-row">
-                <div class="col-7">
-                    <input type="text" class="form-control" placeholder="Nombre" name="nombre">
+                <div class="col-4">
+                    <input type="text" class="form-control" placeholder="Nombre" name="nombre" required>
                 </div>
                 <div class="col">
-                    <input type="text" class="form-control" placeholder="Stock" name="stock">
+                    <input type="num" class="form-control" placeholder="Stock" name="stock" required>
                 </div>
                 <div class="col">
-                    <input type="date" class="form-control" placeholder="Fecha de Vencimiento" name="fecha_vencimiento">
+                    <input type="date" class="form-control" placeholder="Fecha de Vencimiento" name="fecha_vencimiento" required>
                 </div>
                 <div class="col">
-                    <input type="text" class="form-control" placeholder="Precio de Venta" name="precio_venta">
+                    <input type="num" class="form-control" placeholder="Precio de Venta" name="precio_venta" required>
                 </div>
                 <div class="col-auto">
                     <input class="btn btn-primary mb-2" type="submit" value="Guardar">

@@ -1,8 +1,6 @@
 <?php
-
-require_once('../Controlador/h_ventaDAO.php');
-$elemento = HVentaDAO::buscarId($_GET['id']);
-
+    require_once("../Modelo/h_venta.php");
+    require_once("../Controlador/h_ventaDAO.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,7 +20,7 @@ $elemento = HVentaDAO::buscarId($_GET['id']);
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
+    <ul class="navbar-nav m-auto">
       <li class="nav-item active">
         <a class="nav-link" href="principal.php">Home <span class="sr-only">(current)</span></a>
       </li>
@@ -32,10 +30,10 @@ $elemento = HVentaDAO::buscarId($_GET['id']);
     <form class="form-inline my-2 my-lg-0" method="POST">
         <input class="form-control mr-sm-2" type="search" placeholder="Busqueda" aria-label="Search" name="busqueda">
         <select name="cat" class="form-control">
-            <option value="id_producto">Nombre</option>
             <option value="fecha_venta">Fecha de Venta</option>
             <option value="cantidad_venta">Cantidad de Venta</option>
             <option value="total_venta">Total de Venta</option>
+            <option value="id_distribuidor">Producto</option>
         </select>
         <input class="btn btn-outline-success my-2 my-sm-0" type="submit" value="Buscar">
     </form>
@@ -64,17 +62,17 @@ $elemento = HVentaDAO::buscarId($_GET['id']);
     <div class="card card-body">
         <form method="POST" action="../Controlador/h_ventaControlador.php?a=agregar&id">
             <div class="form-row">
-                <div class="col-7">
-                    <input type="text" class="form-control" placeholder="fecha_venta" name="nombre">
+                <div class="col-3">
+                    <input type="date" class="form-control" name="fecha_venta" required>
                 </div>
                 <div class="col">
-                    <input type="text" class="form-control" placeholder="Stock" name="stock">
+                    <input type="num" class="form-control" placeholder="Cantidad de venta" name="cantidad_venta" required>
                 </div>
                 <div class="col">
-                    <input type="date" class="form-control" placeholder="Fecha de Vencimiento" name="fecha_vencimiento">
+                    <input type="num" class="form-control" placeholder="Total de venta" name="total_venta" required>
                 </div>
                 <div class="col">
-                    <input type="text" class="form-control" placeholder="Precio de Venta" name="precio_venta">
+                    <input type="num" class="form-control" placeholder="Producto" name="id_producto" required>
                 </div>
                 <div class="col-auto">
                     <input class="btn btn-primary mb-2" type="submit" value="Guardar">
@@ -116,7 +114,7 @@ $elemento = HVentaDAO::buscarId($_GET['id']);
                     <td ><?php echo $elemento[3]?></td>
                     <td ><?php echo $elemento[4]?></td>
                     <td >
-                        <a class="btn btn-primary" href="form_producto.php?id=<?=$elemento[0]?>">
+                        <a class="btn btn-primary" href="form_h_venta.php?id=<?=$elemento[0]?>">
                             Actualizar
                         </a>
                     </td>
