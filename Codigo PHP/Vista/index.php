@@ -1,11 +1,9 @@
-
 <!doctype html>
 <html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
 <?php require_once "scripts.php"; ?>
 <title>Login</title>
 </head>
@@ -28,7 +26,7 @@
 					<input type="text" id="password" class="form-control input-sm" name="">
 					<p></p>
 					<span class="btn btn-primary" id="entrarSistema">Entrar</span>
-					<a href="#" class="btn btn-danger">Registro</a>
+					<!--<a href="#" class="btn btn-danger">Registro</a>-->
 				</div>
 			</div>
 		</div>
@@ -37,33 +35,3 @@
 </div>
 </body>
 </html>
-
-<script type="text/javascript">
-	$(document).ready(function(){
-		$('#entrarSistema').click(function(){
-			if($('#usuario').val()==""){
-				alertify.alert("Debes agregar el usuario");
-				return false;
-			}else if($('#password').val()==""){
-				alertify.alert("Debes agregar el password");
-				return false;
-			}
-
-			cadena="usuario=" + $('#usuario').val() + 
-					"&password=" + $('#password').val();
-
-					$.ajax({
-						type:"POST",
-						url:"./sesion/login.php",
-						data:cadena,
-						success:function(r){
-							if(r==1){
-								window.location="principal.php";
-							}else{
-								alertify.alert("Fallo al entrar :(");
-							}
-						}
-					});
-		});	
-	});
-</script>

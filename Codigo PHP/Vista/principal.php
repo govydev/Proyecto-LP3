@@ -1,8 +1,4 @@
-<?php 
-	session_start();
-
-	if(isset($_SESSION['usuario'])){
- ?>
+<?php require_once("scripts.php");?>
  <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,37 +6,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" type = "text/css" href="../Estilo/css/style_principal.css">
-    <link rel="stylesheet" type = "text/css" href="../Estilo/css/body.css">
-    <?php require_once "scripts.php"; ?>
     <title>Principal</title>
 </head>
-<body class="principal">
+<body>
     <h1 class="titulo">Bodega "Goliat"</h1>
-        <form action="lista_distribuidor.php">
-            <div class="centro">
-                <button type="submit" class="btn btn-primary mb-2">Distribuidores</button>
-            </div><br>
-        </form>
-        <form action="lista_producto.php">
-            <div class="centro">
-                <button type="submit" class="btn btn-primary mb-2">Productos</button>
-            </div><br>
-        </form>
-        <form action="lista_h_compra.php">
-            <div class="centro">
-                <button type="submit" class="btn btn-primary mb-2">Historial de Compras</button>
-            </div><br>
-        </form>
-        <form action="lista_h_venta.php">
-            <div class="centro">
-                <button type="submit" class="btn btn-primary mb-2">Historial de Ventas</button>
-            </div><br>
-        </form>
+        <div class="card" style="width: 18rem;">
+            <img src="../Estilo/imagenes/icono_distribuidor.png" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Distribuidor</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="lista_distribuidor.php" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+        <div class="card" style="width: 18rem;">
+            <img src="../Estilo/imagenes/icono_producto.png" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Producto</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="lista_producto.php" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+        <div class="card" style="width: 18rem;">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Historial de Compra</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="lista_h_compra.php" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+        <div class="card" style="width: 18rem;">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Historial de Venta</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="lista_h_venta.php" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
         
 </body>
 </html>
-<?php
-} else {
-	header("location:index.php");
-	}
- ?>

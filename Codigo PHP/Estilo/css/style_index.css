@@ -1,0 +1,15 @@
+.titulo{
+  font-family: courier,arial,helvética;
+  font-size: 600%;
+  text-decoration: none;
+  color: darkblue;
+  
+}
+body {
+  background: url(../imagenes/fondo_index1.jpg) no-repeat center;
+  background-size: cover;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
