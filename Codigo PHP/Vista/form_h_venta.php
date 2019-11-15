@@ -16,7 +16,6 @@ $elemento = HVentaDAO::buscarId($_GET['id']);
     <title>Distribuidor</title>
 </head>
 <body>
-<form>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="#">Actualizar Historial de Venta</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,29 +37,30 @@ $elemento = HVentaDAO::buscarId($_GET['id']);
   </div>
 </nav>
 
-<form action="../Controlador/h_ventaControlador.php?a=modificar" method="POST">
-  <div class="form-group">
-    <input type="hidden" name="id" value = "<?= $elemento[0]?>">
-  </div>
-  <div class="form-group">
-    <label >Nombre</label>
-    <input type="date" class="form-control" placeholder="Ingrese Nombre" name="fecha_venta" value = "<?= $elemento[1]?>" required>
-  </div>
-  <div class="form-group">
-    <label >Stock</label>
-    <input type="num" class="form-control" placeholder="Ingrese Stock" name="cantidad_venta" value = "<?= $elemento[2]?>" required>
-  </div>
-  <div class="form-group">
-    <label >Fecha de Vencimiento</label>
-    <input type="num" class="form-control" placeholder="Ingrese Fecha de Vencimiento" name="total_venta" value = "<?= $elemento[3]?>" required>
-  </div>
-  <div class="form-group">
-    <label >Precio de Venta</label>
-    <input type="num" class="form-control" placeholder="Ingrese Precio de Venta" name="id_producto" value = "<?= $elemento[4]?>" required>
-  </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
-</form>
+<center>
+  <form action="../Controlador/h_ventaControlador.php?a=modificar" method="POST">
+    <div class="form-group">
+      <input type="hidden" name="id" value = "<?= $elemento[0]?>">
+    </div>
+    <div class="form-group">
+      <label >Nombre</label>
+      <input type="date" class="form-control" placeholder="Ingrese Nombre" name="fecha_venta" value = "<?= $elemento[1]?>" required>
+    </div>
+    <div class="form-group">
+      <label >Stock</label>
+      <input type="num" class="form-control" placeholder="Ingrese Stock" name="cantidad_venta" value = "<?= $elemento[2]?>" required>
+    </div>
+    <div class="form-group">
+      <label >Fecha de Vencimiento</label>
+      <input type="num" class="form-control" placeholder="Ingrese Fecha de Vencimiento" name="total_venta" value = "<?= $elemento[3]?>" required>
+    </div>
+    <div class="form-group">
+      <label >Precio de Venta</label>
+      <input type="num" class="form-control" placeholder="Ingrese Precio de Venta" name="id_producto" value = "<?= $elemento[4]?>" required>
+    </div>
+    <button type="submit" class="btn btn-outline-dark">Actalizar</button>
+  </form>
+</center>
 </body>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
