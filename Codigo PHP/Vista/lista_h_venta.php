@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+    <link rel="stylesheet" type = "text/css" href="../Estilo/css/style_lista.css">
     <title>Historial de Ventas</title>
 </head>
 <body>
@@ -40,24 +40,6 @@
   </div>
 </nav>
 
-<div class="collapse" id="collapseActualizar">
-    <div class="card card-body">
-        <form>
-            <div class="form-row">
-                <div class="col-7">
-                    <input type="text" class="form-control" placeholder="RUC">
-                </div>
-                <div class="col">
-                    <input type="text" class="form-control" placeholder="Nombre">
-                </div>
-                <div class="col-auto">
-                    <button type="submit" class="btn btn-primary mb-2">Submit</button>
-                </div>
-            </div>
-        </form>
-    </div>
-</div>
-    
 <div class="collapse" id="collapseNuevo">
     <div class="card card-body">
         <form method="POST" action="../Controlador/h_ventaControlador.php?a=agregar&id">
@@ -83,9 +65,9 @@
 </div>
 
 <form method="get">
-    <table class="table" >
+    <table class="table" style="text-align: center">
         <thead class="thead-dark" >
-            <tr>
+            <tr >
                 <th scope="col">Fecha de venta</th>
                 <th scope="col">Cantidad de venta</th>
                 <th scope="col">Total de venta</th>
@@ -114,12 +96,12 @@
                     <td ><?php echo $elemento[3]?></td>
                     <td ><?php echo $elemento[4]?></td>
                     <td >
-                        <a class="btn btn-primary" href="form_h_venta.php?id=<?=$elemento[0]?>">
+                        <a class="btn btn-outline-info" href="form_h_venta.php?id=<?=$elemento[0]?>">
                             Actualizar
                         </a>
                     </td>
                     <td>
-                        <a class="btn btn-primary" href="../Controlador/h_ventaControlador.php?a=eliminar&id=<?=$elemento[0]?>" onclick="return confirm('¿Realmente quiere eliminar el dato?')">
+                        <a class="btn btn-outline-info" href="../Controlador/h_ventaControlador.php?a=eliminar&id=<?=$elemento[0]?>" onclick="return confirm('¿Realmente quiere eliminar el dato?')">
                             Eliminar
                         </a>
                     </td>

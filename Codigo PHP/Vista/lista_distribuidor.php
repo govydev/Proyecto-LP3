@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="../JavaScript/ajax_distribuidor.js" type="text/javascript"></script>
+    <link rel="stylesheet" type = "text/css" href="../Estilo/css/style_lista.css">
     <title>Distribuidores</title>
 </head>
 
@@ -60,12 +61,12 @@
 </div>
 
 <form method="POST">
-    <table class="table" >
+    <table class="table" style="text-align: center">
         <thead class="thead-dark" >
                 <th scope="col">RUC</th>
                 <th scope="col">Nombre</th>
                 <th colspan="2" scope="col" >
-                    <a  data-toggle="collapse" href="#collapseNuevo">
+                    <a  data-toggle="collapse" href="#collapseNuevo" class="btn btn-dark">
                         Nuevo
                     </a>
                 </th>
@@ -84,12 +85,12 @@
                     <td ><?php echo $elemento[1]?></td>
                     <td ><?php echo $elemento[2]?></td>
                     <td >
-                        <a class="btn btn-primary" href="form_distribuidor.php?id=<?=$elemento[0]?>">
+                        <a class="btn btn-outline-info" href="form_distribuidor.php?id=<?=$elemento[0]?>">
                             Actualizar
                         </a>
                     </td>
                     <td>
-                        <a class="delete" href="../Controlador/distribuidorControlador.php?a=eliminar&id=<?=$elemento[0]?>" onclick="return confirm('¿Realmente quiere eliminar el dato?')">
+                        <a class="btn btn-outline-info" href="../Controlador/distribuidorControlador.php?a=eliminar&id=<?=$elemento[0]?>" onclick="return confirm('¿Realmente quiere eliminar el dato?')">
                             Eliminar
                         </a>
                     </td>
