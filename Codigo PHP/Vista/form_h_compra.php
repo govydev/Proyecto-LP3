@@ -2,6 +2,12 @@
 
 require_once('../Controlador/h_compraDAO.php');
 $elemento = HCompraDAO::buscarId($_GET['id']);
+require_once("../Modelo/producto.php");
+require_once("../Controlador/productoDAO.php");
+$producto = ProductoDAO::listarProducto();
+require_once("../Modelo/distribuidor.php");
+require_once("../Controlador/distribuidorDAO.php");
+$distribuidor = DistribuidorDAO::listarDistribuidor()
 
 ?>
 <!DOCTYPE html>
@@ -39,38 +45,44 @@ $elemento = HCompraDAO::buscarId($_GET['id']);
 
 <center>
   <form action="../Controlador/h_compraControlador.php?a=modificar" method="POST">
-    <div class="form-group">
+    <div class="col-2">
       <input type="hidden" name="id" value = "<?= $elemento[0]?>">
     </div>
-    <div class="form-group">
-      <label >Precio de Compra</label>
-      <input type="num" class="form-control" placeholder="Ingrese Precio" name="precio_compra" value = "<?= $elemento[1]?>" required>
+    <div class="col-3">
+      <br><label >Producto ("<?=$elemento[1]?>")</label>
+      <select name="id_producto" id="" class="form-control">
+      <?php foreach($producto as $prdto):?>
+        <option value="<?= $prdto[0]?>"><?= $prdto[1]?></option>
+        <?php endforeach;?>
+      </select>
     </div>
-    <div class="form-group">
-      <label >Fecha de Compra</label>
-      <input type="date" class="form-control" name="fecha_compra" value = "<?= $elemento[2]?>" required>
+    <div class="col-2">
+      <label >Distribuidor ("<?=$elemento[2]?>")</label>
+      <select name="id_distribuidor" id="" class="form-control">
+      <?php foreach($distribuidor as $dst):?>
+        <option value="<?= $dst[0]?>"><?= $dst[1]?></option>
+        <?php endforeach;?>
+      </select>
     </div>
-    <div class="form-group">
+    <div class="col-2">
       <label >Cantidad de Compra</label>
       <input type="num" class="form-control" placeholder="Ingrese Cantidad de Compra" name="cantidad_compra" value = "<?= $elemento[3]?>" required>
     </div>
-    <div class="form-group">
+    <div class="col-2">
       <label >Total de Compra</label>
       <input type="num" class="form-control" placeholder="Ingrese Total de Compra" name="total_compra" value = "<?= $elemento[4]?>" required>
     </div>
-    <div class="form-group">
-      <label >Producto</label>
-      <input type="num" class="form-control" placeholder="Ingrese Id Producto" name="id_producto" value = "<?= $elemento[5]?>" required>
+    <div class="col-2">
+      <label >Precio de Compra</label>
+      <input type="num" class="form-control" placeholder="Ingrese Id Producto" name="precio_compra" value = "<?= $elemento[5]?>" required>
     </div>
-    <div class="form-group">
-      <label >Distribuidor</label>
-      <input type="num" class="form-control" placeholder="Ingrese Id Distribuidor" name="id_distribuidor" value = "<?= $elemento[6]?>" required>
+    <div class="col-2">
+      <label >Fecha de Compra</label>
+      <input type="date" class="form-control" name="fecha_compra" value = "<?= $elemento[6]?>" required>
     </div>
-    <button type="submit" class="btn btn-outline-dark">Actualizar</button>
+    <br><button type="submit" class="btn btn-outline-dark">Actualizar</button>
   </form>
 </center>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>  
 </body>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </html>
