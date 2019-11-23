@@ -1,6 +1,10 @@
 <?php
     require_once("../Modelo/h_compra.php");
     require_once("../Controlador/h_compraDAO.php");
+    require_once("../Modelo/producto.php");
+    require_once("../Controlador/productoDAO.php");
+    require_once("../Modelo/distribuidor.php");
+    require_once("../Controlador/distribuidorDAO.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,6 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link rel="stylesheet" type = "text/css" href="../Estilo/css/style_lista.css">
     <title>Historial de compras</title>
 </head>
@@ -30,18 +35,18 @@
     <form class="form-inline my-2 my-lg-0" method="POST">
         <input class="form-control mr-sm-2" type="search" placeholder="Busqueda" aria-label="Search" name="busqueda">
         <select name="cat" class="form-control">
-            <option value="precio_compra">Precio de Compra</option>
-            <option value="fecha_compra">Fecha de compra</option>
+            <option value="p.nombre">Producto</option>
+            <option value="d.nombre">Distribuidor</option>
             <option value="cantidad_compra">Cantidad de compra</option>
             <option value="total_compra">Total de compra</option>
-            <option value="id_producto">Producto</option>
-            <option value="id_distribuidor">Distribuidor</option>
+            <option value="precio_compra">Precio de Compra</option>
+            <option value="fecha_compra">Fecha de compra</option>
         </select>
         <input class="btn btn-outline-success my-2 my-sm-0" type="submit" value="Buscar">
     </form>
   </div>
 </nav>
-   
+<!-- falta agregar select con nombre de productos y distribuidores -->   
 <div class="collapse" id="collapseNuevo">
     <div class="card card-body">
         <form method="POST" action="../Controlador/h_compraControlador.php?a=agregar&id">
@@ -59,10 +64,24 @@
                     <input type="text" class="form-control" placeholder="Total de compras" name="total_compra" required>
                 </div>
                 <div class="col">
-                    <input type="text" class="form-control" placeholder="Compra" name="id_producto" required>
+                    <select name="id_producto" id="" class="form-control">
+                        <?php 
+                            $producto = ProductoDAO::listarProducto();
+                            foreach($producto as $elemento):?>
+                            <option value="<?php echo $elemento[0]?>" class="form-control"><?php echo $elemento[1]?></option>
+                        <?php endforeach; ?>
+                    </select>
+                    <!-- <input type="text" class="form-control" placeholder="Compra" name="id_producto" required> -->
                 </div>
                 <div class="col">
-                    <input type="text" class="form-control" placeholder="Distribuidor" name="id_distribuidor" required>
+                    <select name="id_distribuidor" id="" class="form-control">
+                        <?php 
+                            $producto = DistribuidorDAO::listarDistribuidor();
+                            foreach($producto as $elemento):?>
+                            <option value="<?php echo $elemento[0]?>" class="form-control"><?php echo $elemento[1]?></option>
+                        <?php endforeach; ?>
+                    </select>
+                        <!-- <input type="text" class="form-control" placeholder="Distribuidor" name="id_distribuidor" required> -->
                 </div>
                 <div class="col-auto">
                     <input class="btn btn-primary mb-2" type="submit" value="Guardar">
@@ -71,17 +90,17 @@
         </form>
     </div>
 </div>
-
+<!--falta agregar en la lista,nuevo y actualizar los productos y distribuidores -->
 <form method="get">
     <table class="table" style="text-align: center">
         <thead class="thead-dark" >
             <tr>
-                <th scope="col">Precio de compra</th>
-                <th scope="col">Fecha de compra</th>
-                <th scope="col">Cantidad de compra</th>
-                <th scope="col">Total de compra</th>
-                <th scope="col">Id Producto</th>
-                <th scope="col">Id Distribuidor</th>
+                <th scope="col">Poducto</th>
+                <th scope="col">Distribuidor</th>
+                <th scope="col">Cantidad de Compra</th>
+                <th scope="col">Total de Compra</th>
+                <th scope="col">Precio de Compra</th>
+                <th scope="col">Fecha de Compra</th>
                 <th colspan="2" scope="col" >
                     <p>
                         <a class="btn btn-dark" data-toggle="collapse" href="#collapseNuevo" role="button" aria-expanded="false" aria-controls="collapseExample">
@@ -122,10 +141,6 @@
         </tbody>
     </table>
 </form>
-
-</body>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
+</body>
 </html>
