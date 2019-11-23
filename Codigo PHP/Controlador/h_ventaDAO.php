@@ -16,8 +16,8 @@ class HVentaDAO{
 
     public static function listarHVenta() {
 		$conexion= new Conexion();
-        //$sql = "SELECT p.nombre, hv.cantidad_venta, hv.total_venta, hv.fecha_venta FROM historial_venta hv, producto p";
-        $sql = "select * FROM historial_venta ";
+        $sql = "SELECT hv.id_venta, p.nombre, hv.cantidad_venta, hv.total_venta, hv.fecha_venta FROM historial_venta hv, producto p";
+        //$sql = "select * FROM historial_venta ";
 		$listado = $conexion->consultar($sql);
 		$conexion->closeConexion();
 		return $listado;
@@ -26,8 +26,8 @@ class HVentaDAO{
 	//queda pendiente funcion de busqueda
 	public static function buscarId ($id) {
 		$conexion= new Conexion();
-        //$sql = "select p.nombre, hv.cantidad_venta, hv.total_venta, hv.fecha_venta FROM historial_venta hv, producto p WHERE hv.id_venta = ".$id." and hv.id_producto = p.id_producto";
-		$sql = "select * FROM historial_venta WHERE id_venta=".$id."";
+        $sql = "SELECT hv.id_venta,p.nombre, hv.cantidad_venta, hv.total_venta, hv.fecha_venta FROM historial_venta hv, producto p WHERE hv.id_venta = ".$id." and hv.id_producto = p.id_producto";
+		//$sql = "select * FROM historial_venta WHERE id_venta=".$id."";
 		$listado = $conexion->consultar($sql);
 		$conexion->closeConexion();
 		return $listado[0];
@@ -35,8 +35,8 @@ class HVentaDAO{
 
 	public static function buscar($id,$categoria) {
 		$conexion= new Conexion();
-		//$sql = "select p.nombre, hv.cantidad_venta, hv.total_venta, hv.fecha_venta FROM historial_venta hv, producto p WHERE ".$categoria." like '".$id."%' and hv.id_producto = p.id_producto";
-		$sql = "select * FROM historial_venta WHERE ".$categoria." like '".$id."%'";
+		$sql = "SELECT hv.id_venta,p.nombre, hv.cantidad_venta, hv.total_venta, hv.fecha_venta FROM historial_venta hv, producto p WHERE ".$categoria." like '".$id."%' and hv.id_producto = p.id_producto";
+		//$sql = "select * FROM historial_venta WHERE ".$categoria." like '".$id."%'";
 		$listado = $conexion->consultar($sql);
 		$conexion->closeConexion();
 		return $listado;
@@ -44,7 +44,7 @@ class HVentaDAO{
 
     public function ingresarDato() {
 		$conexion= new Conexion();
-		$sql = "insert into historial_venta ( fecha_venta, cantidad_venta, total_venta, id_producto) values('".$this->h_venta->getFecha_venta()."','".$this->h_venta->getCantidad_venta()."','".$this->h_venta->getTotal_venta()."','".$this->h_venta->getId_producto()."')";
+		$sql = "INSERT INTO historial_venta ( fecha_venta, cantidad_venta, total_venta, id_producto) VALUES('".$this->h_venta->getFecha_venta()."','".$this->h_venta->getCantidad_venta()."','".$this->h_venta->getTotal_venta()."','".$this->h_venta->getId_producto()."')";
 		$resultado = $conexion->actualizar($sql);
 		$conexion->closeConexion();
 		return $resultado;
@@ -52,7 +52,7 @@ class HVentaDAO{
 
 	public function eliminarDato($id) {
 		$conexion= new Conexion();
-		$sql = "delete from historial_venta where id_venta = ".$id;
+		$sql = "DELETE from historial_venta WHERE id_venta = ".$id;
 		$resultado = $conexion->actualizar($sql);
 		$conexion->closeConexion();
 		return $resultado;
@@ -60,7 +60,7 @@ class HVentaDAO{
 
 	public function editarDato($id) {
 		$conexion= new Conexion();
-		$sql = "update historial_venta set fecha_venta = '".$this->h_venta->getFecha_venta()."', cantidad_venta = '".$this->h_venta->getCantidad_venta()."', total_venta = '".$this->h_venta->getTotal_venta()."', id_producto = '".$this->h_venta->getId_producto()."' where id_venta =".$id;
+		$sql = "UPDATE historial_venta SET fecha_venta = '".$this->h_venta->getFecha_venta()."', cantidad_venta = '".$this->h_venta->getCantidad_venta()."', total_venta = '".$this->h_venta->getTotal_venta()."', id_producto = '".$this->h_venta->getId_producto()."' WHERE id_venta =".$id;
 		$resultado = $conexion->actualizar($sql);
 		$conexion->closeConexion();
 		return $resultado;

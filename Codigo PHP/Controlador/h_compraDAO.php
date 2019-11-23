@@ -18,8 +18,8 @@ class HCompraDAO{
 
     public static function listarHcompra() {
 		$conexion= new Conexion();
-        //$sql = "SELECT p.nombre, hv.cantidad_compra, hv.total_compra, hv.fecha_compra FROM historial_compra hv, producto p";
-        $sql = "select * FROM historial_compra ";
+        $sql = "SELECT hc.id_compra, p.nombre, d.nombre, hc.cantidad_compra, hc.total_compra, hc.precio_compra, hc.fecha_compra FROM historial_compra hc, producto p, distribuidor d";
+        //$sql = "select * FROM historial_compra ";
 		$listado = $conexion->consultar($sql);
 		$conexion->closeConexion();
 		return $listado;
@@ -28,8 +28,8 @@ class HCompraDAO{
 	//queda pendiente funcion de busqueda
 	public static function buscarId ($id) {
 		$conexion= new Conexion();
-        //$sql = "select p.nombre, d.nombre, hv.cantidad_compra, hv.total_compra, hv.fecha_compra FROM historial_compra hv, producto p, distribuidor d WHERE hv.id_compra = ".$id." and hv.id_producto = p.id_producto";
-        $sql = "SELECT * FROM historial_compra WHERE id_compra=".$id."";
+        $sql = "SELECT hc.id_compra, p.nombre, d.nombre, hc.cantidad_compra, hc.total_compra, hc.precio_compra, hc.fecha_compra FROM historial_compra hc, producto p, distribuidor d WHERE hc.id_compra = ".$id." and hc.id_producto = p.id_producto";
+        //$sql = "SELECT * FROM historial_compra WHERE id_compra=".$id."";
         $listado = $conexion->consultar($sql);
 		$conexion->closeConexion();
 		return $listado[0];
@@ -37,8 +37,8 @@ class HCompraDAO{
 //falta modificar
 	public static function buscar($id,$categoria) {
 		$conexion= new Conexion();
-		//$sql = "select p.nombre, hv.cantidad_compra, hv.total_compra, hv.fecha_compra FROM historial_compra hv, producto p WHERE ".$categoria." like '".$id."%' and hv.id_producto = p.id_producto";
-		$sql = "select * FROM historial_compra WHERE ".$categoria." like '".$id."%'";
+		$sql = "SELECT hc.id_compra, p.nombre, d.nombre, hc.cantidad_compra, hc.total_compra, hc.precio_compra, hc.fecha_compra FROM historial_compra hc, producto p, distribuidor d WHERE ".$categoria." like '".$id."%' and hc.id_producto = p.id_producto";
+		//$sql = "select * FROM historial_compra WHERE ".$categoria." like '".$id."%'";
 		$listado = $conexion->consultar($sql);
 		$conexion->closeConexion();
 		return $listado;
