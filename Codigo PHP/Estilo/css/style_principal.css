@@ -1,0 +1,18 @@
+.titulo{
+    font-family: courier,arial,helvética;
+    font-size: 350%;
+    text-decoration: none;
+    color: darkblue;
+    text-align: center;
+  }
+  body {
+    background: url(../imagenes/fondo_1.jpg) no-repeat center;
+    background-size: cover;
+    align-items: center;
+    justify-content: center;
+  }
+  .centrare{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
