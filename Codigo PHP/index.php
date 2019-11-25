@@ -1,4 +1,4 @@
-<?php require_once ("Vista/scripts.php"); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
