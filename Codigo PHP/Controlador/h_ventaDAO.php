@@ -16,7 +16,7 @@ class HVentaDAO{
 
     public static function listarHVenta() {
 		$conexion= new Conexion();
-        $sql = "SELECT hv.id_venta, p.nombre, hv.cantidad_venta, hv.total_venta, hv.fecha_venta FROM historial_venta hv, producto p";
+        $sql = "SELECT hv.id_venta, p.nombre, hv.cantidad_venta, hv.total_venta, hv.fecha_venta FROM historial_venta hv, producto p WHERE hv.id_producto = p.id_producto";
         //$sql = "select * FROM historial_venta ";
 		$listado = $conexion->consultar($sql);
 		$conexion->closeConexion();

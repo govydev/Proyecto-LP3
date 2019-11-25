@@ -18,7 +18,7 @@ class HCompraDAO{
 
     public static function listarHcompra() {
 		$conexion= new Conexion();
-        $sql = "SELECT hc.id_compra, p.nombre, d.nombre, hc.cantidad_compra, hc.total_compra, hc.precio_compra, hc.fecha_compra FROM historial_compra hc, producto p, distribuidor d";
+        $sql = "SELECT hc.id_compra, p.nombre, d.nombre, hc.cantidad_compra, hc.total_compra, hc.precio_compra, hc.fecha_compra FROM historial_compra hc, producto p, distribuidor d WHERE hc.id_producto = p.id_producto AND hc.id_distribuidor = d.id_distribuidor";
         //$sql = "select * FROM historial_compra ";
 		$listado = $conexion->consultar($sql);
 		$conexion->closeConexion();
