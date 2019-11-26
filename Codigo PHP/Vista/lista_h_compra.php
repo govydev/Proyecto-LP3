@@ -14,6 +14,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="../Estilo/alertifyjs/css/alertify.min.css" />
+    <link rel="stylesheet" href="../Estilo/alertifyjs/css/themes/default.min.css" />
     <link rel="stylesheet" type = "text/css" href="../Estilo/css/style_lista.css">
     <title>Historial de compras</title>
 </head>
@@ -49,16 +51,16 @@
         <form method="POST" action="../Controlador/h_compraControlador.php?a=agregar&id">
             <div class="form-row">
                 <div class="col-2">
-                    <input type="num" class="form-control" placeholder="Precio de Compra" name="precio_compra">
+                    <input type="num" class="form-control" placeholder="Precio de Compra" id="precio_compra" name="precio_compra" required>
                 </div>
                 <div class="col">
-                    <input type="date" class="form-control"  name="fecha_compra" required>
+                    <input type="date" class="form-control" id="fecha_compra"  name="fecha_compra" required>
                 </div>
                 <div class="col">
-                    <input type="num" class="form-control" placeholder="Cantidad de compra" name="cantidad_compra" required>
+                    <input type="num" class="form-control" placeholder="Cantidad de compra" id="cantidad_compra" name="cantidad_compra" required>
                 </div>
                 <div class="col">
-                    <input type="text" class="form-control" placeholder="Total de compras" name="total_compra" required>
+                    <input type="text" class="form-control" placeholder="Total de compras" id="total_compra" name="total_compra" required>
                 </div>
                 <div class="col">
                     <select name="id_producto" id="" class="form-control">
@@ -81,7 +83,7 @@
                     </select>
                 </div>
                 <div class="col-auto">
-                    <input class="btn btn-dark mb-2" type="submit" value="Guardar">
+                    <input class="btn btn-dark mb-2" type="submit" value="Guardar" onclick="validar()">
                 </div>
             </div>
         </form>
@@ -137,6 +139,33 @@
         </tbody>
     </table>
 </form>
+<script src="../Estilo/alertifyjs/alertify.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 </html>
+<script type="text/javascript">
+    function validar(){
+        // Campos de texto
+        if($("#precio_compra").val() == ""){
+            alertify.alert("Precio","El campo Precio de Compra no puede estar vacío.");
+            $("#precio_compra").focus();// Esta función coloca el foco de escritura sobre el campo.
+            return false;
+        }
+        if($("#fecha_compra").val() == ""){
+            alertify.alert("Fecha de Compra","El campo Fecha de Compra no puede estar vacío.");
+            $("#fecha_compra").focus();
+            return false;
+        }
+        if($("#cantidad_compra").val() == ""){
+            alertify.alert("Cantidad de Compra","El campo Cantidad de Compra no puede estar vacío.");
+            $("#cantidad_compra").focus();
+            return false;
+        }
+        if($("#total_compra").val() == ""){
+            alertify.alert("Total de Compra","El campo Total de Compra no puede estar vacío.");
+            $("#total_compra").focus();
+            return false;
+        }
+        return true;  //Si todo está correcto
+    }
+</script>
