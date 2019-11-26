@@ -10,6 +10,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="../Estilo/alertifyjs/css/alertify.min.css" />
+    <link rel="stylesheet" href="../Estilo/alertifyjs/css/themes/default.min.css" />
     <link rel="stylesheet" type = "text/css" href="../Estilo/css/style_lista.css">
     <title>Productos</title>
 </head>
@@ -44,19 +46,19 @@
         <form method="POST" action="../Controlador/productoControlador.php?a=agregar&id">
             <div class="form-row">
                 <div class="col-4">
-                    <input type="text" class="form-control" placeholder="Nombre" name="nombre" required>
+                    <input type="text" class="form-control" placeholder="Nombre" id="nombre" name="nombre" required>
                 </div>
                 <div class="col">
-                    <input type="num" class="form-control" placeholder="Stock" name="stock" required>
+                    <input type="num" class="form-control" placeholder="Stock" id="stock" name="stock" required>
                 </div>
                 <div class="col">
-                    <input type="date" class="form-control" placeholder="Fecha de Vencimiento" name="fecha_vencimiento" required>
+                    <input type="date" class="form-control" placeholder="Fecha de Vencimiento" id="fecha_vencimiento" name="fecha_vencimiento" required>
                 </div>
                 <div class="col">
-                    <input type="num" class="form-control" placeholder="Precio de Venta" name="precio_venta" required>
+                    <input type="num" class="form-control" placeholder="Precio de Venta" id="precio_venta" name="precio_venta" required>
                 </div>
                 <div class="col-auto">
-                    <input class="btn btn-dark mb-2" type="submit" value="Guardar">
+                    <input class="btn btn-dark mb-2" type="submit" value="Guardar" onclick="validar()">
                 </div>
             </div>
         </form>
@@ -108,6 +110,32 @@
         </tbody>
     </table>
 </form>  
+<script src="../Estilo/alertifyjs/alertify.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 </html>
+<script type="text/javascript">
+function validar(){
+        // Campos de texto
+        if($("#nombre").val() == ""){
+            alertify.alert("Nombre","El campo Nombre no puede estar vacío.");
+            $("#nombre").focus();       // Esta función coloca el foco de escritura del usuario en el campo Nombre directamente.
+            return false;
+        }
+        if($("#stock").val() == ""){
+            alertify.alert("Stock","El campo Stock no puede estar vacío.");
+            $("#stock").focus();
+            return false;
+        }
+        if($("#fecha_vencimiento").val() == ""){
+            alertify.alert("Fecha de Vencimiento","El campo Fecha de Vencimiento no puede estar vacío.");
+            $("#fecha_vencimiento").focus();
+            return false;
+        }if($("#precio_venta").val() == ""){
+            alertify.alert("Precio de Venta","El campo Precio de Venta no puede estar vacío.");
+            $("#precio_venta").focus();
+            return false;
+        }
+        return true;  //Si todo está correcto
+    }
+</script>
