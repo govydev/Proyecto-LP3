@@ -21,5 +21,9 @@ El proyecto consiste es automatizar la tienda Goliat, utilizando herramientras a
 
 - Mejora de la sintaxis del codigo.
 
+# V.1.0.2
+
+- Validacion de todos los formularios de ingreso de datos con el framework <a href="https://alertifyjs.com">Alertify js</a>.
+- Se inserto nuevamente el archivo <a href="Codigo PHP\Conexion\config.php">Config.php</a> para poder configurar la base de datos Mysql.
 
 
