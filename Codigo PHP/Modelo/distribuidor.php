@@ -6,25 +6,31 @@ class Distribuidor{
     private $nombre;
     private $ruc;
 
-    public function setId_distribuidor($id){
+    public function setId_distribuidor($id)
+    {
         $this->id=$id;
     } 
 
-    public function getId_distribuidor(){
+    public function getId_distribuidor()
+    {
         return $this->id;
     }
-    public function setNombre($nombre){
+    public function setNombre($nombre)
+    {
         $this->nombre=$nombre;
     } 
 
-    public function getNombre(){
+    public function getNombre()
+    {
         return $this->nombre;
     }
-    public function setRuc($ruc){
+    public function setRuc($ruc)
+    {
         $this->ruc=$ruc;
     } 
 
-    public function getRuc(){
+    public function getRuc()
+    {
         return $this->ruc;
     }
 }

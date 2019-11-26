@@ -1,7 +1,6 @@
 <?php 
     require_once("../Modelo/distribuidor.php");
     require_once("../Controlador/distribuidorDAO.php");
-    
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -14,30 +13,28 @@
     <link rel="stylesheet" type = "text/css" href="../Estilo/css/style_lista.css">
     <title>Distribuidores</title>
 </head>
-
 <body >
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Distribuidores</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav m-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="principal.php">Home <span class="sr-only">(current)</span></a>
-      </li>
-    </ul>
-    <form class="form-inline my-2 my-lg-0" method="POST">
-      <input class="form-control mr-sm-2" type="search" placeholder="Busqueda" aria-label="Search" name="busqueda">
-      <select name="cat" class="form-control">
-            <option value="nombre">Nombre</option>
-            <option value="ruc">RUC</option>
-        </select>
-      <input class="btn btn-outline-success my-2 my-sm-0" type="submit" value="Buscar">
-    </form>
-  </div>
+    <a class="navbar-brand" href="#">Distribuidores</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav m-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="principal.php">Home <span class="sr-only">(current)</span></a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0" method="POST">
+            <input class="form-control mr-sm-2" type="search" placeholder="Busqueda" aria-label="Search" name="busqueda">
+            <select name="cat" class="form-control">
+                <option value="nombre">Nombre</option>
+                <option value="ruc">RUC</option>
+            </select>
+            <input class="btn btn-outline-secondary my-2 my-sm-0" type="submit" value="Buscar">
+        </form>
+    </div>
 </nav>
 
 <div class="collapse" id="collapseNuevo">
@@ -51,7 +48,7 @@
                     <input type="text" class="form-control" placeholder="Nombre" name="nombre" required>
                 </div>
                 <div class="col-auto">
-                    <input class="btn btn-primary mb-2" type="submit" value="Guardar">
+                    <input class="btn btn-dark mb-2" type="submit" value="Guardar">
                 </div>
             </div>
         </form>
@@ -78,21 +75,22 @@
                 else
                     $datos = DistribuidorDAO::buscar($_POST["busqueda"],$_POST["cat"]);
 
-                foreach($datos as $elemento):?>
-                <tr>
-                    <td ><?php echo $elemento[1]?></td>
-                    <td ><?php echo $elemento[2]?></td>
-                    <td >
-                        <a class="btn btn-outline-info" href="form_distribuidor.php?id=<?=$elemento[0]?>">
-                            Actualizar
-                        </a>
-                    </td>
-                    <td>
-                        <a class="btn btn-outline-info" href="../Controlador/distribuidorControlador.php?a=eliminar&id=<?=$elemento[0]?>" onclick="return confirm('¿Realmente quiere eliminar el dato?')">
-                            Eliminar
-                        </a>
-                    </td>
-                </tr>
+                foreach($datos as $elemento):
+            ?>
+            <tr>
+                <td ><?php echo $elemento[1]?></td>
+                <td ><?php echo $elemento[2]?></td>
+                <td >
+                    <a class="btn btn-outline-dark"" href="form_distribuidor.php?id=<?=$elemento[0]?>">
+                        Actualizar
+                    </a>
+                </td>
+                <td>
+                    <a class="btn btn-outline-dark"" href="../Controlador/distribuidorControlador.php?a=eliminar&id=<?=$elemento[0]?>" onclick="return confirm('¿Realmente quiere eliminar el dato?')">
+                        Eliminar
+                    </a>
+                </td>
+            </tr>
             <?php endforeach; ?>
         </tbody>
     </table>

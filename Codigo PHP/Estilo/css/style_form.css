@@ -1,3 +1,17 @@
-body{
+body
+{
     background: url(../imagenes/fondo_2.jpg) no-repeat center;
+    background-size: cover;
+    align-items: center;
+    justify-content: center;
+}
+.navbar-brand
+{
+    font-family: 'Acme', sans-serif;
+    font-size: 170%;
+}
+.nav-link
+{
+    font-size: 130%;
+    font-family: 'Archivo Black', sans-serif;
 }

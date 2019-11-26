@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.6
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: localhost
--- Tiempo de generación: 28-10-2019 a las 00:29:41
--- Versión del servidor: 5.7.17-log
--- Versión de PHP: 5.6.30
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 25-11-2019 a las 01:58:31
+-- Versión del servidor: 10.4.6-MariaDB
+-- Versión de PHP: 7.1.32
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -17,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `bodega`
+-- Base de datos: `tienda`
 --
 
 -- --------------------------------------------------------
@@ -38,7 +40,8 @@ CREATE TABLE `distribuidor` (
 
 INSERT INTO `distribuidor` (`id_distribuidor`, `nombre`, `ruc`) VALUES
 (1, 'Roxipa', '20602961061'),
-(2, 'PACI', '20373209601');
+(10, 'Jorge', '2347641865'),
+(106, 'Flavio', '234563284');
 
 -- --------------------------------------------------------
 
@@ -61,7 +64,7 @@ CREATE TABLE `historial_compra` (
 --
 
 INSERT INTO `historial_compra` (`id_compra`, `precio_compra`, `fecha_compra`, `cantidad_compra`, `total_compra`, `id_producto`, `id_distribuidor`) VALUES
-(1, 0, '2019-10-17', 12, 23, 1, 2),
+(1, 1, '2019-10-14', 12, 23, 1, 1),
 (2, 0, '2019-10-17', 12, 23, 2, 2),
 (3, 0, '2019-10-17', 8, 31.8, 3, 2),
 (4, 0, '2019-10-17', 8, 31.8, 4, 2),
@@ -100,7 +103,10 @@ INSERT INTO `historial_venta` (`id_venta`, `fecha_venta`, `cantidad_venta`, `tot
 (7, '2019-10-26', 2, 2, 9),
 (8, '2019-10-26', 1, 2.5, 1),
 (9, '2019-10-27', 1, 10, 7),
-(10, '2019-10-27', 3, 3, 9);
+(10, '2019-10-27', 3, 3, 9),
+(14, '2019-11-12', 12, 12, 0),
+(17, '2019-11-13', 1, 1, 2),
+(18, '2019-11-11', 22, 22, 0);
 
 -- --------------------------------------------------------
 
@@ -113,14 +119,14 @@ CREATE TABLE `producto` (
   `nombre` varchar(30) NOT NULL,
   `stock` int(11) NOT NULL,
   `fecha_vencimiento` date NOT NULL,
-  `precio venta` float NOT NULL
+  `precio_venta` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `producto`
 --
 
-INSERT INTO `producto` (`id_producto`, `nombre`, `stock`, `fecha_vencimiento`, `precio venta`) VALUES
+INSERT INTO `producto` (`id_producto`, `nombre`, `stock`, `fecha_vencimiento`, `precio_venta`) VALUES
 (1, 'Coca Cola 625ml', 10, '2020-04-04', 2.5),
 (2, 'Inca Kola 625ml', 10, '2020-04-04', 2.5),
 (3, 'Coca Cola 1L', 5, '2020-02-04', 3.5),
@@ -130,27 +136,7 @@ INSERT INTO `producto` (`id_producto`, `nombre`, `stock`, `fecha_vencimiento`, `
 (7, 'Coca Cola 3L descartable', 2, '2020-02-04', 10),
 (8, 'Inca Kola 3L descartable', 2, '2020-02-04', 10),
 (9, 'Papas Lay\'s', 8, '2019-12-10', 1),
-(10, 'Piqueo Snax', 8, '2019-12-10', 1.2);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `usuario`
---
-
-CREATE TABLE `usuario` (
-  `id_usuario` int(11) NOT NULL,
-  `usuario` varchar(10) NOT NULL,
-  `contraseña` varchar(10) NOT NULL,
-  `estado` char(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Volcado de datos para la tabla `usuario`
---
-
-INSERT INTO `usuario` (`id_usuario`, `usuario`, `contraseña`, `estado`) VALUES
-(1, 'admin', '12345', 'a');
+(10, 'Piqueo Snax', 8, '2019-12-10', 1.3);
 
 --
 -- Índices para tablas volcadas
@@ -181,12 +167,6 @@ ALTER TABLE `producto`
   ADD PRIMARY KEY (`id_producto`);
 
 --
--- Indices de la tabla `usuario`
---
-ALTER TABLE `usuario`
-  ADD PRIMARY KEY (`id_usuario`);
-
---
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -194,27 +174,27 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `distribuidor`
 --
 ALTER TABLE `distribuidor`
-  MODIFY `id_distribuidor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_distribuidor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=108;
+
 --
 -- AUTO_INCREMENT de la tabla `historial_compra`
 --
 ALTER TABLE `historial_compra`
-  MODIFY `id_compra` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_compra` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
 --
 -- AUTO_INCREMENT de la tabla `historial_venta`
 --
 ALTER TABLE `historial_venta`
-  MODIFY `id_venta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_venta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+
 --
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
---
--- AUTO_INCREMENT de la tabla `usuario`
---
-ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

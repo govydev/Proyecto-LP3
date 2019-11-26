@@ -4,7 +4,8 @@
 
     $accion = $_GET["a"];
 
-    switch ($accion) {
+    switch ($accion)
+    {
         case 'agregar':
             $distribuidor = new HCompraDAO();
             $distribuidor->setHCompra($_POST["precio_compra"],$_POST["fecha_compra"],$_POST["cantidad_compra"],$_POST["total_compra"],$_POST["id_producto"],$_POST["id_distribuidor"]);
