@@ -1,11 +1,13 @@
-.titulo{
-  font-family: courier,arial,helvética;
+.titulo
+{
+  
   font-size: 600%;
   text-decoration: none;
   color: darkblue;
-  
+  font-family: 'Calistoga', cursive;
 }
-body {
+body
+{
   background: url(../imagenes/fondo_index1.jpg) no-repeat center;
   background-size: cover;
   min-height: 100vh;

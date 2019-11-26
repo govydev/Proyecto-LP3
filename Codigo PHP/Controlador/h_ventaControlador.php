@@ -4,7 +4,8 @@
 
     $accion = $_GET["a"];
 
-    switch ($accion) {
+    switch ($accion)
+    {
         case 'agregar':
             $distribuidor = new HVentaDAO();
             $distribuidor->setHVenta($_POST["fecha_venta"],$_POST["cantidad_venta"],$_POST["total_venta"],$_POST["id_producto"]);

@@ -4,7 +4,8 @@
 
     $accion = $_GET["a"];
 
-    switch ($accion) {
+    switch ($accion)
+    {
         case 'agregar':
             $distribuidor = new DistribuidorDAO();
             $distribuidor->setDistribuidor($_POST["nombre"],$_POST["ruc"]);

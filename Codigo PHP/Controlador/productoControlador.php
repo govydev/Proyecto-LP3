@@ -4,7 +4,8 @@
 
     $accion = $_GET["a"];
 
-    switch ($accion) {
+    switch ($accion)
+    {
         case 'agregar':
             $producto = new ProductoDAO();
             $producto->setProducto($_POST["nombre"],$_POST["stock"],$_POST["fecha_vencimiento"],$_POST["precio_venta"]);
