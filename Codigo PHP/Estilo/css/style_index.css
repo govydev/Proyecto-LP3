@@ -1,17 +1,96 @@
 .titulo
 {
-  
   font-size: 600%;
   text-decoration: none;
   color: darkblue;
   font-family: 'Calistoga', cursive;
+  
+  justify-content: center;
+  background-size: cover;
 }
 body
 {
   background: url(../imagenes/fondo_index1.jpg) no-repeat center;
   background-size: cover;
+  
+}
+.centrar{
+	justify-content: center;
+  background-size: cover;
+  align-items: center;
   min-height: 100vh;
   display: flex;
-  align-items: center;
-  justify-content: center;
 }
+
+* {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	font-family: 'Lato', sans-serif;
+	line-height: 1;
+  }
+  
+  body {
+	background-color: #F5F6F8;
+	overflow: hidden;
+  }
+  
+  .sidebar-navigation {
+	display: inline-block;
+	min-height: 100vh;
+	width: 80px;
+	background-color: #6464660e;
+	float: left;
+  }
+  .sidebar-navigation ul {
+	text-align: center;
+	color: white;
+  }
+  .sidebar-navigation ul li {
+	padding: 28px 0;
+	cursor: pointer;
+	transition: all ease-out 120ms;
+  }
+  .sidebar-navigation ul li i {
+	display: block;
+	font-size: 24px;
+	transition: all ease 450ms;
+  }
+  .sidebar-navigation ul li .tooltip {
+	display: inline-block;
+	position: absolute;
+	background-color: #1e2f8334;
+	padding: 8px 15px;
+	border-radius: 3px;
+	margin-top: -26px;
+	left: 90px;
+	opacity: 0;
+	visibility: hidden;
+	font-size: 13px;
+	letter-spacing: .5px;
+  }
+  .sidebar-navigation ul li .tooltip:before {
+	content: '';
+	display: block;
+	position: absolute;
+	left: -4px;
+	top: 10px;
+	-webkit-transform: rotate(45deg);
+			transform: rotate(45deg);
+	width: 10px;
+	height: 10px;
+	background-color: inherit;
+  }
+  .sidebar-navigation ul li:hover {
+	background-color: rgba(59, 89, 179, 0.137);
+  }
+  .sidebar-navigation ul li:hover .tooltip {
+	visibility: visible;
+	opacity: 1;
+  }
+  .sidebar-navigation ul li.active {
+	background-color: #22252E;
+  }
+  .sidebar-navigation ul li.active i {
+	color: #98D7EC;
+  }
