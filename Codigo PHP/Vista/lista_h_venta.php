@@ -3,6 +3,7 @@
     require_once("../Controlador/h_ventaDAO.php");
     require_once("../Modelo/producto.php");
     require_once("../Controlador/productoDAO.php");
+    require_once("../Estilo/scripts/scripts.php");
 ?>
 <!DOCTYPE html>
 <html lang="es">

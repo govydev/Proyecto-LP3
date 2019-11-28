@@ -5,6 +5,7 @@
     require_once("../Controlador/productoDAO.php");
     require_once("../Modelo/distribuidor.php");
     require_once("../Controlador/distribuidorDAO.php");
+    require_once("../Estilo/scripts/scripts.php");
 ?>
 <!DOCTYPE html>
 <html lang="es">
