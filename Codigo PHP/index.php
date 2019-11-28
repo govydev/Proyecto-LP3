@@ -12,26 +12,17 @@
     <title>Goliat</title>
 </head>
 <body>
-<nav class="sidebar-navigation">
-	<ul>
-		<li class="active">
-        <i class="fa fa-sliders"></i>
-			<span class="tooltip">Settings</span>
-		</li>
-	</ul>
-</nav>
     <div class="centrar">
     <a class="titulo" onclick="validar()">Bienvenido a Goliat</a>
     </div>
-    
     <script src="Estilo/alertifyjs/alertify.js"></script>
 </body>
 </html>
 <script type="text/javascript">
     function validar(){
-        alertify.prompt( 'Admministrador', 'Ingrese Clave de Acceso:', ''
+        alertify.prompt( 'Admministrador', 'Ingrese Clave de Acceso:',''
                 ,function(evt, value) {
-                    if(value=="123"){
+                    if(value=="admin"){
                         alertify.alert('Correcto', 'Ingresando...', function(){ window.location = 'Vista/principal.php' })
                     }else{
                         alertify.error('Error')
@@ -46,7 +37,7 @@
 
 <script type="text/javascript">
 	$('ul li').on('click', function() {
-	$('li').removeClass('active');
-	$(this).addClass('active');
-});
+        $('li').removeClass('active');
+        $(this).addClass('active');
+    });
 </script>

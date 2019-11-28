@@ -91,14 +91,14 @@
                 <td><?php echo $elemento[1]?></td>
                 <td><?php echo $elemento[2]?></td>
                 <td><?php echo $elemento[3]?></td>
-                <td><?php echo $elemento[4 ]?></td>
+                <td><?php echo $elemento[4]?></td>
                 <td>
                     <a class="btn btn-outline-dark"" href="form_producto.php?id=<?=$elemento[0]?>">
                         Actualizar
                     </a>
                 </td>
                 <td>
-                    <a class="btn btn-outline-dark"" href="../Controlador/productoControlador.php?a=eliminar&id=<?=$elemento[0]?>" onclick="return confirm('¿Realmente quiere eliminar el dato?')">
+                    <a class="btn btn-outline-dark" href='../Controlador/productoControlador.php?a=eliminar&id=<?=$elemento[0]?>' onclick="return confirm('¿Realmente quiere eliminar el dato?')">
                         Eliminar
                     </a>
                 </td>

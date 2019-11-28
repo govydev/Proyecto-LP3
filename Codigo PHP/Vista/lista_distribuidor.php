@@ -85,7 +85,7 @@
                     </a>
                 </td>
                 <td>
-                    <a class="btn btn-outline-dark"" href="../Controlador/distribuidorControlador.php?a=eliminar&id=<?=$elemento[0]?>" onclick="return confirm('¿Realmente quiere eliminar el dato?')">
+                    <a class="btn btn-outline-dark" href='../Controlador/distribuidorControlador.php?a=eliminar&id=<?=$elemento[0]?>' onclick="return confirm('¿Realmente quiere eliminar el dato?')">
                         Eliminar
                     </a>
                 </td>
@@ -94,8 +94,6 @@
         </tbody>
     </table>
 </form>
-<script src="../Estilo/alertifyjs/alertify.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 </html>
 <script type="text/javascript">
@@ -112,5 +110,9 @@
             return false;
         }
         return true;  //Si todo está correcto
+    }
+    function confirmar(){
+        alertify.confirm('Eliminar', '¿Realmente quiere eliminar el dato?', function(){ window.location = '../Controlador/distribuidorControlador.php?a=eliminar&id=<?=$elemento[0]?>'}
+                , function(){ alertify.error('Cancel')});
     }
 </script>
