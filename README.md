@@ -26,4 +26,11 @@ El proyecto consiste es automatizar la tienda Goliat, utilizando herramientras a
 - Validacion de todos los formularios de ingreso de datos con el framework <a href="https://alertifyjs.com">Alertify js</a>.
 - Se inserto nuevamente el archivo <a href="Codigo PHP\Conexion\config.php">Config.php</a> para poder configurar la base de datos Mysql.
 
+# V.1.0.3
+
+- Se agrego framework <a href="http://fancyapps.com/fancybox/3/">Fancybox 3</a>, para mejorar aspecto de tablas.
+- Cambio de contraseña para el inicio del programa por **admin**
+- Insercion de nueva tabla boleta para listar productos, aun en testeo.
+- Creación de archivo <a href="Codigo PHP\Estilo\scripts\scripts.php">scripts.php</a> para mantener ordenado todos los recursos utilizados de los archivos de la carpeta *Vista*.
+
 
