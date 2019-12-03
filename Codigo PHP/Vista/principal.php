@@ -55,8 +55,7 @@
         </div>
     </div>
     <center>
-        <br><a data-fancybox data-type="iframe" data-src="lista_boleta.php" href="javascript:;" class="btn btn-outline-warning">Boleta >></a>
-        <br><div class="container">
+        <br>
         <input type="button" class="home" onclick="location.href='../index.php'">
     </center>
 </body>
